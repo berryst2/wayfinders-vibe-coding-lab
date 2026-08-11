@@ -1,0 +1,137 @@
+/* ============================================================
+   WAYFINDERS VIBE CODING LAB - STARTER STYLES
+   CHANGE ME: colours, fonts and spacing are yours to play with.
+   Tip: ask GitHub Copilot "change the colour theme to ..."
+   ============================================================ */
+
+:root {
+  --deep-ocean: #003b5c;
+  --bright-blue: #0078d4;
+  --sky: #f4f7fb;
+  --ink: #1f2937;
+  --muted: #4b5563;
+  --card: #ffffff;
+  --radius: 16px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: var(--sky);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, var(--deep-ocean), var(--bright-blue));
+  color: #ffffff;
+  padding: 48px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+}
+
+.hero,
+.feature {
+  background: var(--card);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+button {
+  background: var(--bright-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: #005a9e;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.message {
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--deep-ocean);
+  min-height: 1.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--deep-ocean);
+}
+
+.card .detail {
+  color: var(--muted);
+  font-style: italic;
+}
+
+footer {
+  text-align: center;
+  padding: 24px 20px 40px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Works nicely on smaller screens and school laptops */
+@media (max-width: 480px) {
+  header {
+    padding: 32px 16px;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+}
