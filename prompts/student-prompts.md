@@ -11,6 +11,7 @@ Use this as a simple index so you can add more examples later without crowding o
 - [03-stem-journey-map.md](03-stem-journey-map.md) — a multi-page STEM journey planner with an animated trail map and a celebration certificate page
 - [04-build-your-own-spec.md](04-build-your-own-spec.md) — a student prompt that helps generate a requirements/spec document before building, including page structure and a wow-factor feature
 - [05-follow-up-prompts.md](05-follow-up-prompts.md) — extra prompts for accessibility, mobile layout, debugging, README, demo prep, going multi-page, and adding gamified polish
+- [06-interactive-game.md](06-interactive-game.md) — a real-time Canvas arcade game with keyboard and touch controls, lives, score, sound effects, and a saved high score
 
 ## Quick use
 

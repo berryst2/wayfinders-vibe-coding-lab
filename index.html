@@ -20,9 +20,9 @@
     <a href="#codespaces">3. Codespaces</a>
     <a href="#vibe-coding">4. Vibe coding</a>
     <a href="#build">5. Build</a>
-    <a href="#publish">6. Publish</a>
+    <a href="#iterate">6. Iterate</a>
     <a href="#test">7. Test</a>
-    <a href="#iterate">8. Iterate</a>
+    <a href="#publish">8. Publish</a>
     <a href="#checklist">Checklist</a>
   </nav>
 
@@ -120,7 +120,8 @@
         <li>Select <strong>Create codespace on main</strong>.</li>
         <li>Wait about a minute while your coding environment loads in the browser.</li>
         <li>You should see <code>index.html</code>, <code>style.css</code>, <code>script.js</code>, and the <code>prompts</code> folder in the file list on the left.</li>
-        <li>Select the <strong>Ports</strong> tab at the bottom, find port <strong>8080</strong>, and select the globe icon to preview your app in a new tab.</li>
+        <li>Open a terminal (<strong>Terminal</strong> menu &rarr; <strong>New Terminal</strong>) and run <code>python3 -m http.server 8080</code> to preview your site.</li>
+        <li>When the <strong>Ports</strong> tab pops up at the bottom, select the globe icon next to port <strong>8080</strong> to open your app in a new tab.</li>
       </ol>
       <p class="note">Codespaces gives you a full coding environment inside your browser tab. There is nothing to install on your own computer.</p>
     </section>
@@ -180,6 +181,12 @@
           <p>Not sure what to build? Answer a few questions and Copilot will write your project brief for you.</p>
           <button type="button" class="prompt-open-btn" data-prompt-file="prompts/04-build-your-own-spec.md" data-prompt-title="✏️ Build your own spec">View &amp; copy prompt</button>
         </article>
+
+        <article class="prompt-card">
+          <h3>🎮 Interactive arcade game</h3>
+          <p>A real-time Canvas game with keyboard and touch controls, lives, score, sound effects, and a saved high score.</p>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/06-interactive-game.md" data-prompt-title="🎮 Interactive arcade game">View &amp; copy prompt</button>
+        </article>
       </div>
 
       <h3>How to paste your prompt into Copilot Chat in VS Code</h3>
@@ -213,10 +220,39 @@
     </section>
 
     <!-- ============================================================
-         STEP 6: PUBLISH
+         STEP 6: ITERATE
+         ============================================================ -->
+    <section class="feature" id="iterate">
+      <h2><span class="step-badge">6</span>Iterate like a real developer</h2>
+      <p>Your first version will not be perfect, and that is normal. Use small, focused prompts to improve it.</p>
+      <ol class="steps">
+        <li>Refresh your preview tab after every change.</li>
+        <li>Ask for one improvement at a time, for example colours, spacing, or a new feature.</li>
+        <li>When something is not working, describe what you expected and what happened instead.</li>
+        <li>Open <a href="prompts/05-follow-up-prompts.md">05-follow-up-prompts.md</a> for ready-made prompts covering accessibility, mobile layout, images, bug fixes, the README, and your demo script.</li>
+        <li>Commit and push often (see Step 8 below) so your work is never lost.</li>
+      </ol>
+    </section>
+
+    <!-- ============================================================
+         STEP 7: TEST
+         ============================================================ -->
+    <section class="feature" id="test">
+      <h2><span class="step-badge">7</span>Test your app</h2>
+      <ul class="check-list">
+        <li>Every button and interactive feature works as expected</li>
+        <li>There are no error messages in the browser console</li>
+        <li>The text is easy to read and free of typos</li>
+        <li>The layout works on a narrow, phone-sized window</li>
+        <li>You can use the app with only a keyboard</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================
+         STEP 8: PUBLISH
          ============================================================ -->
     <section class="feature" id="publish">
-      <h2><span class="step-badge">6</span>Publish with GitHub Pages</h2>
+      <h2><span class="step-badge">8</span>Publish with GitHub Pages</h2>
 
       <h3>Commit and push your changes to your fork</h3>
       <ol class="steps">
@@ -237,35 +273,6 @@
         <li>Wait a minute, then refresh the Pages settings screen to see your live link.</li>
       </ol>
       <p class="note">Your app will be published at: <code>https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/</code></p>
-    </section>
-
-    <!-- ============================================================
-         STEP 7: TEST
-         ============================================================ -->
-    <section class="feature" id="test">
-      <h2><span class="step-badge">7</span>Test your app</h2>
-      <ul class="check-list">
-        <li>Every button and interactive feature works as expected</li>
-        <li>There are no error messages in the browser console</li>
-        <li>The text is easy to read and free of typos</li>
-        <li>The layout works on a narrow, phone-sized window</li>
-        <li>You can use the app with only a keyboard</li>
-      </ul>
-    </section>
-
-    <!-- ============================================================
-         STEP 8: ITERATE
-         ============================================================ -->
-    <section class="feature" id="iterate">
-      <h2><span class="step-badge">8</span>Iterate like a real developer</h2>
-      <p>Your first version will not be perfect, and that is normal. Use small, focused prompts to improve it.</p>
-      <ol class="steps">
-        <li>Refresh your preview tab after every change.</li>
-        <li>Ask for one improvement at a time, for example colours, spacing, or a new feature.</li>
-        <li>When something is not working, describe what you expected and what happened instead.</li>
-        <li>Open <a href="prompts/05-follow-up-prompts.md">05-follow-up-prompts.md</a> for ready-made prompts covering accessibility, mobile layout, images, bug fixes, the README, and your demo script.</li>
-        <li>Commit and push again after each improvement (see Step 6 above) so your work is never lost.</li>
-      </ol>
     </section>
 
     <!-- ============================================================
