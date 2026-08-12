@@ -26,22 +26,36 @@ if (button && message) {
   });
 }
 
-// 4. Click-to-reveal cards.
-//    Each card has a data-detail value in index.html.
-const cards = document.querySelectorAll(".card");
+// 4. Interactive checklist - saves progress in the browser
+//    so it is still checked off after the page refreshes.
+const checklistItems = document.querySelectorAll("#projectChecklist input[type='checkbox']");
+const progressLabel = document.getElementById("checklistProgress");
+const checklistStorageKey = "wayfinders-checklist";
 
-cards.forEach(function (card) {
-  card.addEventListener("click", function () {
-    const detailBox = card.querySelector(".detail");
-    if (!detailBox) return;
+function updateChecklistProgress() {
+  if (!progressLabel || checklistItems.length === 0) return;
+  const checkedCount = document.querySelectorAll("#projectChecklist input:checked").length;
+  progressLabel.textContent = checkedCount + " of " + checklistItems.length + " steps complete";
+}
 
-    if (detailBox.textContent === "") {
-      detailBox.textContent = card.dataset.detail;
-    } else {
-      detailBox.textContent = "";
+if (checklistItems.length > 0) {
+  const saved = JSON.parse(localStorage.getItem(checklistStorageKey) || "{}");
+
+  checklistItems.forEach(function (item) {
+    if (saved[item.dataset.check]) {
+      item.checked = true;
     }
+
+    item.addEventListener("change", function () {
+      const current = JSON.parse(localStorage.getItem(checklistStorageKey) || "{}");
+      current[item.dataset.check] = item.checked;
+      localStorage.setItem(checklistStorageKey, JSON.stringify(current));
+      updateChecklistProgress();
+    });
   });
-});
+
+  updateChecklistProgress();
+}
 
 /* ============================================================
    ADD YOUR OWN FEATURE BELOW

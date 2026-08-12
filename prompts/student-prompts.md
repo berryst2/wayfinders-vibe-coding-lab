@@ -1,118 +1,24 @@
 # Student prompt pack
 
-Copy these into **GitHub Copilot Chat**. Replace anything in `[square brackets]`.
+Choose one scenario file below and copy the prompt into GitHub Copilot Chat or Copilot Agent.
 
----
+Use this as a simple index so you can add more examples later without crowding one file.
 
-## 1. Turn my idea into an app plan
+## Available prompt files
 
-```
-I am a high school student building a simple web app for my STEM class.
-My idea is: [describe your idea in one sentence]
+- [01-navigation-quiz.md](01-navigation-quiz.md) — a quiz game about navigation and STEM
+- [02-knowledge-keeper.md](02-knowledge-keeper.md) — a knowledge card app with interactive reveal and search
+- [03-stem-journey-map.md](03-stem-journey-map.md) — a personal STEM journey planner
+- [04-build-your-own-spec.md](04-build-your-own-spec.md) — a student prompt that helps generate a requirements/spec document before building
+- [05-follow-up-prompts.md](05-follow-up-prompts.md) — extra prompts for accessibility, mobile layout, debugging, README, and demo prep
 
-Turn this into a small app plan with:
-1. A simple app name
-2. The main purpose
-3. Three features I can build today
-4. A simple page layout
-5. The first version of the content I could use
+## Quick use
 
-Keep it beginner friendly.
-```
+1. Open the scenario file you want.
+2. Copy the entire prompt block.
+3. Paste it into Copilot Chat.
+4. Review the proposed changes.
+5. Preview the site and test the interactive features.
+6. If the idea benefits from richer media, add extra sections, imagery, sound, animations, or a second page instead of limiting the project to a single file.
 
----
-
-## 2. Build the first version
-
-```
-Create the first version of my web app using HTML, CSS and JavaScript.
-
-App name: [name]
-Audience: [who it is for]
-Purpose: [what it helps people do]
-Theme: [the story or topic]
-Design vibe: [ocean / stars / bright / calm / futuristic / cultural]
-
-Update index.html, style.css and script.js.
-Keep the code beginner friendly and add comments explaining each part.
-```
-
----
-
-## 3. Add an interactive feature
-
-```
-Add one simple interactive feature to my web app, inside the section
-with id "myFeature".
-
-I want: [a quiz with a score / click to reveal facts / journey steps /
-a random inspiration card / an image gallery]
-
-Update the HTML, CSS and JavaScript.
-Explain what you changed in simple language.
-```
-
----
-
-## 4. Make it look better
-
-```
-Improve the design of my web app. My vibe is: [describe]
-Improve:
-1. Colours
-2. Layout
-3. Buttons
-4. Spacing
-5. Mobile friendly design
-
-Keep it simple and easy to understand.
-```
-
----
-
-## 5. Help me fix an error
-
-```
-Something is not working in my web app.
-I expected: [what you wanted]
-What happens instead: [the problem]
-Here is the code or error message:
-[paste it]
-
-Explain the problem in simple language and show me how to fix it.
-```
-
----
-
-## 6. Write my README
-
-```
-Create a README.md for my GitHub project.
-Include: project name, what the app does, how it was built, features,
-how to use it, what I learned, and a spot for my GitHub Pages link.
-Make it friendly and suitable for a high school STEM project.
-```
-
----
-
-## 7. Prepare my demo
-
-```
-Write a 30 second demo script for my web app.
-App name: [name]
-It helps people: [purpose]
-My favourite feature: [feature]
-I learned: [learning]
-
-Write it in a confident, natural student voice.
-```
-
----
-
-## Prompting tips
-
-- **Be specific.** "Make the buttons rounded and ocean blue" beats "make it nicer".
-- **One change at a time.** Ask, apply, preview, then ask again.
-- **Tell it who you are.** Adding "I am a beginner" gets simpler code and better explanations.
-- **Ask it to explain.** "Explain what this code does" is a valid prompt.
-- **Errors are normal.** Paste them straight into Copilot and ask for help.
+> Tip: Keep each prompt focused on one idea, but do not be afraid to add engaging visuals, interactive elements, and supporting content that helps the audience stay interested and understand the information.

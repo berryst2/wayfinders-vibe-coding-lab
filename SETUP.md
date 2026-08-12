@@ -1,6 +1,7 @@
 # Facilitator setup guide
 
-How to stand this repository up and test it end to end before the session.
+How to stand this repository up and test it end to end before the session. 
+
 
 ---
 

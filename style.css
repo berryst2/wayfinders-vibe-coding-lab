@@ -19,6 +19,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, Helvetica, sans-serif;
@@ -44,8 +48,36 @@ header p {
   opacity: 0.9;
 }
 
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  background: #ffffff;
+  border-bottom: 1px solid #dbe3ee;
+  padding: 10px 12px;
+}
+
+.top-nav a {
+  color: var(--deep-ocean);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.top-nav a:hover,
+.top-nav a:focus-visible {
+  background: var(--sky);
+  outline: 2px solid var(--bright-blue);
+}
+
 main {
-  max-width: 900px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 24px 20px 40px;
 }
@@ -89,34 +121,166 @@ button:active {
   min-height: 1.5rem;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
 }
 
-.card {
-  background: var(--card);
-  padding: 20px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.card h3 {
-  margin-top: 0;
+.flow-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sky);
+  border: 1px solid #dbe3ee;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--deep-ocean);
 }
 
-.card .detail {
+.flow-icon {
+  font-size: 1rem;
+}
+
+.flow-arrow {
   color: var(--muted);
-  font-style: italic;
+  font-weight: 700;
+}
+
+.step-badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: var(--deep-ocean);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.check-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  line-height: 1.9;
+}
+
+.note {
+  background: #eef5ff;
+  border-left: 4px solid var(--bright-blue);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.chat-example {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.chat-bubble {
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  max-width: 90%;
+}
+
+.chat-you {
+  background: #eef5ff;
+  align-self: flex-start;
+}
+
+.chat-copilot {
+  background: #f1fbf4;
+  align-self: flex-end;
+  border: 1px solid #d6f0dd;
+}
+
+.prompt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.prompt-card {
+  background: var(--sky);
+  border: 1px solid #dbe3ee;
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.prompt-card h3 {
+  margin: 0 0 6px;
+  color: var(--deep-ocean);
+}
+
+.prompt-card p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.prompt-card a {
+  font-weight: 600;
+  color: var(--bright-blue);
+  text-decoration: none;
+}
+
+.prompt-card a:hover {
+  text-decoration: underline;
+}
+
+.steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  line-height: 1.8;
+}
+
+.interactive-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.interactive-checklist label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sky);
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.interactive-checklist input {
+  width: 18px;
+  height: 18px;
+}
+
+.progress-label {
+  margin: 14px 0 0;
+  font-weight: 600;
+  color: var(--deep-ocean);
+}
+
+code {
+  background: #edf3ff;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.95em;
 }
 
 footer {
@@ -126,12 +290,24 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Works nicely on smaller screens and school laptops */
 @media (max-width: 480px) {
   header {
     padding: 32px 16px;
   }
+
   header h1 {
     font-size: 1.5rem;
+  }
+
+  .hero,
+  .feature,
+  .prompt-card {
+    padding: 18px;
+  }
+
+  .top-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
   }
 }

@@ -3,73 +3,249 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Wayfinders App</title>
+  <title>Wayfinders Vibe Coding Lab</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- ============================================================
-       HEADER
-       CHANGE ME: your app name and one-line description
-       ============================================================ -->
   <header>
-    <h1 id="appTitle">My Wayfinders App</h1>
-    <p id="appTagline">A simple web app I built with GitHub Copilot.</p>
+    <h1>Wayfinders Vibe Coding Lab</h1>
+    <p>Build a web app or game with GitHub Copilot and publish it with GitHub Pages.</p>
   </header>
+
+  <nav class="top-nav" aria-label="Page sections">
+    <a href="#overview">Overview</a>
+    <a href="#prerequisites">Prerequisites</a>
+    <a href="#signup">1. Sign up</a>
+    <a href="#get-the-code">2. Get the code</a>
+    <a href="#codespaces">3. Codespaces</a>
+    <a href="#vibe-coding">4. Vibe coding</a>
+    <a href="#build">5. Build</a>
+    <a href="#iterate">6. Iterate</a>
+    <a href="#test">7. Test</a>
+    <a href="#publish">8. Publish</a>
+    <a href="#checklist">Checklist</a>
+  </nav>
 
   <main>
 
     <!-- ============================================================
-         WELCOME SECTION
-         CHANGE ME: explain what your app does and who it is for
+         OVERVIEW
+         High-level flow so students see the whole journey first.
          ============================================================ -->
-    <section class="hero">
-      <h2>Welcome</h2>
-      <p id="appPurpose">
-        This app was made to share something I care about. Change this text to
-        explain what your app does and who it is for.
+    <section class="hero" id="overview">
+      <h2>How students can build their own app</h2>
+      <p>
+        This project is a starter for students who want to create a small web app, quiz,
+        game, story page, or learning tool using HTML, CSS, and JavaScript. You do not need
+        to be an expert, and you do not need to install anything. You just need a clear idea
+        and a little patience.
       </p>
-      <button id="messageButton">Tap me</button>
+
+      <div class="flow" role="list">
+        <span class="flow-step" role="listitem"><span class="flow-icon">💡</span>Pick an idea</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">🔑</span>Sign up</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">📥</span>Copy the code</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">💻</span>Open Codespaces</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">🤖</span>Vibe code with Copilot</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">🧪</span>Test it</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">🚀</span>Publish</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">📣</span>Share</span>
+      </div>
+
+      <button id="messageButton">Show a motivation message</button>
       <p id="message" class="message"></p>
     </section>
 
     <!-- ============================================================
-         KNOWLEDGE CARDS
-         CHANGE ME: three ideas, facts, stories or steps
-         Click a card to reveal more detail.
+         PREREQUISITES
          ============================================================ -->
-    <section class="cards">
-
-      <article class="card" data-detail="Add the detail that appears when this card is selected.">
-        <h3>Idea 1</h3>
-        <p>Add a short description here.</p>
-        <p class="detail"></p>
-      </article>
-
-      <article class="card" data-detail="Add the detail that appears when this card is selected.">
-        <h3>Idea 2</h3>
-        <p>Add a short description here.</p>
-        <p class="detail"></p>
-      </article>
-
-      <article class="card" data-detail="Add the detail that appears when this card is selected.">
-        <h3>Idea 3</h3>
-        <p>Add a short description here.</p>
-        <p class="detail"></p>
-      </article>
-
+    <section class="feature" id="prerequisites">
+      <h2>Prerequisites</h2>
+      <p>Before you start, make sure you have:</p>
+      <ul class="check-list">
+        <li>A computer, Chromebook, or tablet with a modern web browser (Chrome, Edge, or Firefox)</li>
+        <li>An internet connection</li>
+        <li>A free <a href="https://github.com" target="_blank" rel="noopener">GitHub.com</a> account (Step 1 below)</li>
+        <li>Access to GitHub Copilot (through your school, GitHub Education, or GitHub Copilot Free)</li>
+        <li>About 45&ndash;60 minutes</li>
+      </ul>
+      <p class="note">Nothing needs to be installed. All the coding happens in the browser using GitHub Codespaces.</p>
     </section>
 
     <!-- ============================================================
-         YOUR INTERACTIVE FEATURE GOES HERE
-         Ask GitHub Copilot to add a quiz, a journey map, a gallery,
-         or a random message generator inside this section.
+         STEP 1: SIGN UP
          ============================================================ -->
-    <section id="myFeature" class="feature">
-      <h2>My interactive feature</h2>
-      <p>Ask GitHub Copilot to build your feature inside this section.</p>
+    <section class="feature" id="signup">
+      <h2><span class="step-badge">1</span>Create your GitHub.com account</h2>
+      <ol class="steps">
+        <li>Go to <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>.</li>
+        <li>Enter your email address, create a password, and choose a username.</li>
+        <li>Verify your email using the code GitHub sends you.</li>
+        <li>If your school provides GitHub Education or Copilot access, ask your teacher for sign-up instructions so Copilot is enabled on your account.</li>
+      </ol>
+      <p class="note">Already have an account? Sign in and skip ahead to Step 2.</p>
     </section>
 
+    <!-- ============================================================
+         STEP 2: GET THE CODE
+         ============================================================ -->
+    <section class="feature" id="get-the-code">
+      <h2><span class="step-badge">2</span>Get your own copy of this project</h2>
+      <ol class="steps">
+        <li>Open this repository on GitHub.</li>
+        <li>Select the green <strong>Use this template</strong> button (or <strong>Fork</strong> if that option is shown instead).</li>
+        <li>Choose <strong>Create a new repository</strong>.</li>
+        <li>Give your copy a short name, for example <code>my-wayfinders-app</code>.</li>
+        <li>Set the visibility to <strong>Public</strong> &mdash; this is required for free GitHub Pages publishing later.</li>
+        <li>Select <strong>Create repository</strong>.</li>
+      </ol>
+      <p class="note">You now have your own copy of the project. Every change you make from here happens in your copy, not the original.</p>
+    </section>
+
+    <!-- ============================================================
+         STEP 3: CODESPACES
+         ============================================================ -->
+    <section class="feature" id="codespaces">
+      <h2><span class="step-badge">3</span>Open your project in GitHub Codespaces</h2>
+      <ol class="steps">
+        <li>In <em>your</em> new repository, select the green <strong>Code</strong> button.</li>
+        <li>Select the <strong>Codespaces</strong> tab.</li>
+        <li>Select <strong>Create codespace on main</strong>.</li>
+        <li>Wait about a minute while your coding environment loads in the browser.</li>
+        <li>You should see <code>index.html</code>, <code>style.css</code>, <code>script.js</code>, and the <code>prompts</code> folder in the file list on the left.</li>
+        <li>Select the <strong>Ports</strong> tab at the bottom, find port <strong>8080</strong>, and select the globe icon to preview your app in a new tab.</li>
+      </ol>
+      <p class="note">Codespaces gives you a full coding environment inside your browser tab. There is nothing to install on your own computer.</p>
+    </section>
+
+    <!-- ============================================================
+         STEP 4: VIBE CODING
+         ============================================================ -->
+    <section class="feature" id="vibe-coding">
+      <h2><span class="step-badge">4</span>What is &ldquo;vibe coding&rdquo;?</h2>
+      <p>
+        Vibe coding means describing what you want in plain English and letting GitHub Copilot
+        write the HTML, CSS, and JavaScript for you. You focus on the idea and the experience.
+        Copilot focuses on the code. You still read the result, test it, and ask for changes
+        until it feels right.
+      </p>
+      <div class="chat-example">
+        <div class="chat-bubble chat-you"><strong>You:</strong> Build a quiz about navigation with a score counter.</div>
+        <div class="chat-bubble chat-copilot"><strong>Copilot:</strong> Updates index.html, style.css, and script.js, then explains what changed and what to test.</div>
+        <div class="chat-bubble chat-you"><strong>You:</strong> Make the score bigger and add a restart button.</div>
+        <div class="chat-bubble chat-copilot"><strong>Copilot:</strong> Adjusts the styles and adds the restart feature.</div>
+      </div>
+      <p class="note">Open <strong>Copilot Chat</strong> in Codespaces (the chat icon in the left sidebar) to start a conversation like this one.</p>
+    </section>
+
+    <!-- ============================================================
+         STEP 5: BUILD - the real prompt files live in /prompts
+         ============================================================ -->
+    <section class="feature" id="build">
+      <h2><span class="step-badge">5</span>Choose your build prompt</h2>
+      <p>
+        Open the <a href="prompts/student-prompts.md">prompts folder</a> and pick one scenario.
+        Each file has a ready-to-use prompt: open it, copy the whole grey code block, and paste
+        it into Copilot Chat.
+      </p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>🧭 Navigation quiz</h3>
+          <p>A quiz game about navigation, the stars, and wayfinding with a score counter and random questions.</p>
+          <a href="prompts/01-navigation-quiz.md">Open 01-navigation-quiz.md</a>
+        </article>
+
+        <article class="prompt-card">
+          <h3>📖 Knowledge keeper</h3>
+          <p>A card-based app with click-to-reveal facts and a search box.</p>
+          <a href="prompts/02-knowledge-keeper.md">Open 02-knowledge-keeper.md</a>
+        </article>
+
+        <article class="prompt-card">
+          <h3>🗺️ STEM journey map</h3>
+          <p>A personal step-by-step journey planner that saves progress in the browser.</p>
+          <a href="prompts/03-stem-journey-map.md">Open 03-stem-journey-map.md</a>
+        </article>
+
+        <article class="prompt-card">
+          <h3>✏️ Build your own spec</h3>
+          <p>Not sure what to build? Answer a few questions and Copilot will write your project brief for you.</p>
+          <a href="prompts/04-build-your-own-spec.md">Open 04-build-your-own-spec.md</a>
+        </article>
+      </div>
+
+      <p class="note">Paste one prompt at a time. Read what Copilot changed, then preview your app before asking for the next change.</p>
+    </section>
+
+    <!-- ============================================================
+         STEP 6: ITERATE
+         ============================================================ -->
+    <section class="feature" id="iterate">
+      <h2><span class="step-badge">6</span>Iterate like a real developer</h2>
+      <p>Your first version will not be perfect, and that is normal. Use small, focused prompts to improve it.</p>
+      <ol class="steps">
+        <li>Refresh your preview tab after every change.</li>
+        <li>Ask for one improvement at a time, for example colours, spacing, or a new feature.</li>
+        <li>When something is not working, describe what you expected and what happened instead.</li>
+        <li>Open <a href="prompts/05-follow-up-prompts.md">05-follow-up-prompts.md</a> for ready-made prompts covering accessibility, mobile layout, images, bug fixes, the README, and your demo script.</li>
+      </ol>
+    </section>
+
+    <!-- ============================================================
+         STEP 7: TEST
+         ============================================================ -->
+    <section class="feature" id="test">
+      <h2><span class="step-badge">7</span>Test your app</h2>
+      <ul class="check-list">
+        <li>Every button and interactive feature works as expected</li>
+        <li>There are no error messages in the browser console</li>
+        <li>The text is easy to read and free of typos</li>
+        <li>The layout works on a narrow, phone-sized window</li>
+        <li>You can use the app with only a keyboard</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================
+         STEP 8: PUBLISH
+         ============================================================ -->
+    <section class="feature" id="publish">
+      <h2><span class="step-badge">8</span>Publish with GitHub Pages</h2>
+      <ol class="steps">
+        <li>In Codespaces, commit and sync your changes using the <strong>Source Control</strong> tab.</li>
+        <li>Go to your repository on GitHub.com.</li>
+        <li>Select <strong>Settings</strong> &rarr; <strong>Pages</strong>.</li>
+        <li>Under <strong>Build and deployment</strong>, choose <strong>Deploy from a branch</strong>.</li>
+        <li>Set the branch to <strong>main</strong> and the folder to <strong>/ (root)</strong>, then select <strong>Save</strong>.</li>
+        <li>Wait a minute, then refresh the Pages settings screen to see your live link.</li>
+      </ol>
+      <p class="note">Your app will be published at: <code>https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/</code></p>
+    </section>
+
+    <!-- ============================================================
+         CHECKLIST - checkboxes persist using localStorage
+         ============================================================ -->
+    <section class="feature checklist" id="checklist">
+      <h2>Your project checklist</h2>
+      <ul class="interactive-checklist" id="projectChecklist">
+        <li><label><input type="checkbox" data-check="account" /> Created my GitHub.com account</label></li>
+        <li><label><input type="checkbox" data-check="copy" /> Made my own copy of the project</label></li>
+        <li><label><input type="checkbox" data-check="codespace" /> Opened my project in Codespaces</label></li>
+        <li><label><input type="checkbox" data-check="prompt" /> Chose a prompt file and pasted it into Copilot</label></li>
+        <li><label><input type="checkbox" data-check="iterate" /> Asked follow-up prompts to improve my app</label></li>
+        <li><label><input type="checkbox" data-check="tested" /> Tested my app in the browser and on mobile</label></li>
+        <li><label><input type="checkbox" data-check="published" /> Published my app with GitHub Pages</label></li>
+        <li><label><input type="checkbox" data-check="shared" /> Shared my live link with others</label></li>
+      </ul>
+      <p class="progress-label" id="checklistProgress"></p>
+    </section>
   </main>
 
   <footer>
