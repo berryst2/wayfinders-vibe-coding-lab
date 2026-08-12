@@ -20,9 +20,9 @@
     <a href="#codespaces">3. Codespaces</a>
     <a href="#vibe-coding">4. Vibe coding</a>
     <a href="#build">5. Build</a>
-    <a href="#iterate">6. Iterate</a>
+    <a href="#publish">6. Publish</a>
     <a href="#test">7. Test</a>
-    <a href="#publish">8. Publish</a>
+    <a href="#iterate">8. Iterate</a>
     <a href="#checklist">Checklist</a>
   </nav>
 
@@ -99,14 +99,14 @@
     <section class="feature" id="get-the-code">
       <h2><span class="step-badge">2</span>Get your own copy of this project</h2>
       <ol class="steps">
-        <li>Open this repository on GitHub.</li>
-        <li>Select the green <strong>Use this template</strong> button (or <strong>Fork</strong> if that option is shown instead).</li>
-        <li>Choose <strong>Create a new repository</strong>.</li>
-        <li>Give your copy a short name, for example <code>my-wayfinders-app</code>.</li>
-        <li>Set the visibility to <strong>Public</strong> &mdash; this is required for free GitHub Pages publishing later.</li>
-        <li>Select <strong>Create repository</strong>.</li>
+        <li>Open the repository at <a href="https://github.com/berryst2/wayfinders-vibe-coding-lab" target="_blank" rel="noopener">github.com/berryst2/wayfinders-vibe-coding-lab</a>.</li>
+        <li>In the top-right corner of the page, select the <strong>Fork</strong> button.</li>
+        <li>On the &ldquo;Create a new fork&rdquo; screen, you can keep the repository name as it is or give it your own short name, for example <code>my-wayfinders-app</code>.</li>
+        <li>Leave <strong>Copy the main branch only</strong> checked.</li>
+        <li>Select <strong>Create fork</strong>.</li>
+        <li>GitHub will open your new copy of the project under your own account.</li>
       </ol>
-      <p class="note">You now have your own copy of the project. Every change you make from here happens in your copy, not the original.</p>
+      <p class="note">You now have your own copy of the project. Every change you make from here happens in your copy, not the original. Forks are public by default, which is what you need for free GitHub Pages publishing later.</p>
     </section>
 
     <!-- ============================================================
@@ -151,52 +151,92 @@
     <section class="feature" id="build">
       <h2><span class="step-badge">5</span>Choose your build prompt</h2>
       <p>
-        Open the <a href="prompts/student-prompts.md">prompts folder</a> and pick one scenario.
-        Each file has a ready-to-use prompt: open it, copy the whole grey code block, and paste
-        it into Copilot Chat.
+        Pick one scenario below and select <strong>View &amp; copy prompt</strong>. A panel slides in
+        from the right with the ready-to-use prompt so you can copy it without leaving this page.
+        You can also browse every file in the <a href="prompts/student-prompts.md">prompts folder</a> directly.
       </p>
 
       <div class="prompt-grid">
         <article class="prompt-card">
           <h3>🧭 Navigation quiz</h3>
-          <p>A quiz game about navigation, the stars, and wayfinding with a score counter and random questions.</p>
-          <a href="prompts/01-navigation-quiz.md">Open 01-navigation-quiz.md</a>
+          <p>A multi-page quiz game about navigation, the stars, and wayfinding with streaks, badges, sound effects, and a confetti finish.</p>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/01-navigation-quiz.md" data-prompt-title="🧭 Navigation quiz">View &amp; copy prompt</button>
         </article>
 
         <article class="prompt-card">
           <h3>📖 Knowledge keeper</h3>
-          <p>A card-based app with click-to-reveal facts and a search box.</p>
-          <a href="prompts/02-knowledge-keeper.md">Open 02-knowledge-keeper.md</a>
+          <p>A card-based app with flip-to-reveal facts, a search box, and a collectible "Knowledge Passport" page.</p>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/02-knowledge-keeper.md" data-prompt-title="📖 Knowledge keeper">View &amp; copy prompt</button>
         </article>
 
         <article class="prompt-card">
           <h3>🗺️ STEM journey map</h3>
-          <p>A personal step-by-step journey planner that saves progress in the browser.</p>
-          <a href="prompts/03-stem-journey-map.md">Open 03-stem-journey-map.md</a>
+          <p>A multi-page journey planner with an animated trail map and a celebration certificate page.</p>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/03-stem-journey-map.md" data-prompt-title="🗺️ STEM journey map">View &amp; copy prompt</button>
         </article>
 
         <article class="prompt-card">
           <h3>✏️ Build your own spec</h3>
           <p>Not sure what to build? Answer a few questions and Copilot will write your project brief for you.</p>
-          <a href="prompts/04-build-your-own-spec.md">Open 04-build-your-own-spec.md</a>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/04-build-your-own-spec.md" data-prompt-title="✏️ Build your own spec">View &amp; copy prompt</button>
         </article>
       </div>
 
+      <h3>How to paste your prompt into Copilot Chat in VS Code</h3>
+      <p>Your Codespace is really Visual Studio Code running in the browser, so Copilot Chat works the same way it would on a computer.</p>
+      <ol class="steps">
+        <li>Select the <strong>Copilot Chat</strong> icon in the left sidebar of your Codespace (or press <code>Ctrl+Alt+I</code>).</li>
+        <li>At the bottom of the Chat panel, make sure <strong>Agent</strong> mode is selected so Copilot can edit your files directly.</li>
+        <li>Select a prompt card above, then select <strong>Copy prompt</strong> in the panel that slides in from the right.</li>
+        <li>Click inside the Copilot Chat box, paste the prompt, and press <strong>Enter</strong> to send it.</li>
+        <li>Copilot will edit <code>index.html</code>, <code>style.css</code>, and <code>script.js</code>. Review the changes it made, then select <strong>Keep</strong> to apply them.</li>
+        <li>Refresh your preview tab to see the result.</li>
+      </ol>
+
       <p class="note">Paste one prompt at a time. Read what Copilot changed, then preview your app before asking for the next change.</p>
+
+      <div class="prompt-drawer-overlay" id="promptDrawerOverlay" hidden></div>
+      <aside class="prompt-drawer" id="promptDrawer" aria-hidden="true" aria-labelledby="promptDrawerTitle">
+        <div class="prompt-drawer-header">
+          <h3 id="promptDrawerTitle">Prompt</h3>
+          <button type="button" class="prompt-drawer-close" id="promptDrawerClose" aria-label="Close prompt panel">&times;</button>
+        </div>
+        <div class="prompt-drawer-body">
+          <p class="note" id="promptDrawerStatus">Loading prompt&hellip;</p>
+          <pre id="promptDrawerText" class="prompt-drawer-pre" tabindex="0"></pre>
+        </div>
+        <div class="prompt-drawer-footer">
+          <button type="button" class="prompt-copy-btn" id="promptDrawerCopy">📋 Copy prompt</button>
+          <a id="promptDrawerFileLink" href="#" target="_blank" rel="noopener">Open full file</a>
+        </div>
+      </aside>
     </section>
 
     <!-- ============================================================
-         STEP 6: ITERATE
+         STEP 6: PUBLISH
          ============================================================ -->
-    <section class="feature" id="iterate">
-      <h2><span class="step-badge">6</span>Iterate like a real developer</h2>
-      <p>Your first version will not be perfect, and that is normal. Use small, focused prompts to improve it.</p>
+    <section class="feature" id="publish">
+      <h2><span class="step-badge">6</span>Publish with GitHub Pages</h2>
+
+      <h3>Commit and push your changes to your fork</h3>
       <ol class="steps">
-        <li>Refresh your preview tab after every change.</li>
-        <li>Ask for one improvement at a time, for example colours, spacing, or a new feature.</li>
-        <li>When something is not working, describe what you expected and what happened instead.</li>
-        <li>Open <a href="prompts/05-follow-up-prompts.md">05-follow-up-prompts.md</a> for ready-made prompts covering accessibility, mobile layout, images, bug fixes, the README, and your demo script.</li>
+        <li>Select the <strong>Source Control</strong> icon in the left sidebar of your Codespace (it looks like a branch).</li>
+        <li>Hover over <strong>Changes</strong> and select the <strong>+</strong> icon to stage all your edited files.</li>
+        <li>Type a short commit message in the box at the top, for example <code>Build my first version</code>.</li>
+        <li>Select the checkmark (<strong>Commit</strong>) button.</li>
+        <li>Select <strong>Sync Changes</strong> (or <strong>Push</strong>) to send your commit to your forked repository on GitHub.com.</li>
       </ol>
+      <p class="note">Pushing sends your code to <em>your</em> fork, not the original lab repository, so it is always safe to commit and push.</p>
+
+      <h3>Turn on GitHub Pages</h3>
+      <ol class="steps">
+        <li>Go to your repository on GitHub.com.</li>
+        <li>Select <strong>Settings</strong> &rarr; <strong>Pages</strong>.</li>
+        <li>Under <strong>Build and deployment</strong>, choose <strong>Deploy from a branch</strong>.</li>
+        <li>Set the branch to <strong>main</strong> and the folder to <strong>/ (root)</strong>, then select <strong>Save</strong>.</li>
+        <li>Wait a minute, then refresh the Pages settings screen to see your live link.</li>
+      </ol>
+      <p class="note">Your app will be published at: <code>https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/</code></p>
     </section>
 
     <!-- ============================================================
@@ -214,19 +254,18 @@
     </section>
 
     <!-- ============================================================
-         STEP 8: PUBLISH
+         STEP 8: ITERATE
          ============================================================ -->
-    <section class="feature" id="publish">
-      <h2><span class="step-badge">8</span>Publish with GitHub Pages</h2>
+    <section class="feature" id="iterate">
+      <h2><span class="step-badge">8</span>Iterate like a real developer</h2>
+      <p>Your first version will not be perfect, and that is normal. Use small, focused prompts to improve it.</p>
       <ol class="steps">
-        <li>In Codespaces, commit and sync your changes using the <strong>Source Control</strong> tab.</li>
-        <li>Go to your repository on GitHub.com.</li>
-        <li>Select <strong>Settings</strong> &rarr; <strong>Pages</strong>.</li>
-        <li>Under <strong>Build and deployment</strong>, choose <strong>Deploy from a branch</strong>.</li>
-        <li>Set the branch to <strong>main</strong> and the folder to <strong>/ (root)</strong>, then select <strong>Save</strong>.</li>
-        <li>Wait a minute, then refresh the Pages settings screen to see your live link.</li>
+        <li>Refresh your preview tab after every change.</li>
+        <li>Ask for one improvement at a time, for example colours, spacing, or a new feature.</li>
+        <li>When something is not working, describe what you expected and what happened instead.</li>
+        <li>Open <a href="prompts/05-follow-up-prompts.md">05-follow-up-prompts.md</a> for ready-made prompts covering accessibility, mobile layout, images, bug fixes, the README, and your demo script.</li>
+        <li>Commit and push again after each improvement (see Step 6 above) so your work is never lost.</li>
       </ol>
-      <p class="note">Your app will be published at: <code>https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/</code></p>
     </section>
 
     <!-- ============================================================

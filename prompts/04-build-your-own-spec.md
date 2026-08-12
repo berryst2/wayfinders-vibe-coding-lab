@@ -19,17 +19,19 @@ Create a simple project specification with these sections:
 2. Short description
 3. Audience
 4. Goals and purpose
-5. Three key sections or cards to include on the page
-6. One main interactive feature
-7. Colours and visual style
-8. Accessibility and mobile requirements
-9. Success criteria for the first version
-10. Example content ideas for the page
+5. Pages the site will have (for example a home page, plus one or two feature pages) and what each page is for
+6. Three key sections or cards to include on the home page
+7. One main interactive feature
+8. One "wow factor" feature that makes the site feel fun and exciting, such as a celebration animation, a badge or streak system, a sound effect toggle, or a small game-like element
+9. Colours and visual style
+10. Accessibility and mobile requirements
+11. Success criteria for the first version
+12. Example content ideas for the page
 
 Write the document in a friendly, beginner-friendly tone.
 Keep the content realistic for a polished HTML, CSS, and JavaScript project.
-Encourage the final idea to include engaging elements such as images, subtle animation, sound effects, interactive sections, extra information panels, and optional extra pages if they make the story more compelling for the audience.
-Do not limit the project to a single page unless it is truly the best choice. Keep it simple enough to build in a student project and compatible with GitHub Pages.
+Encourage the final idea to include engaging elements such as images, subtle animation, sound effects, interactive sections, extra information panels, and a small multi-page structure so the project does not feel limited to a single page.
+Keep it simple enough to build in a student project and compatible with GitHub Pages.
 
 Then turn the specification into a final ready-to-use prompt that I can paste into Copilot to build the website.
 
@@ -37,10 +39,12 @@ The final prompt should include:
 - The app name
 - The audience
 - The purpose
+- The pages to create and what links to what
 - The content sections
 - The design style
 - The interactive feature
-- The files to update: index.html, style.css, and script.js
+- The wow factor feature
+- The files to update: index.html, style.css, and script.js (plus any extra HTML pages)
 - A note to keep the code beginner friendly and easy to understand
 
 Give me both:

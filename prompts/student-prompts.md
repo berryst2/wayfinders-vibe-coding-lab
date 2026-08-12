@@ -6,11 +6,11 @@ Use this as a simple index so you can add more examples later without crowding o
 
 ## Available prompt files
 
-- [01-navigation-quiz.md](01-navigation-quiz.md) — a quiz game about navigation and STEM
-- [02-knowledge-keeper.md](02-knowledge-keeper.md) — a knowledge card app with interactive reveal and search
-- [03-stem-journey-map.md](03-stem-journey-map.md) — a personal STEM journey planner
-- [04-build-your-own-spec.md](04-build-your-own-spec.md) — a student prompt that helps generate a requirements/spec document before building
-- [05-follow-up-prompts.md](05-follow-up-prompts.md) — extra prompts for accessibility, mobile layout, debugging, README, and demo prep
+- [01-navigation-quiz.md](01-navigation-quiz.md) — a multi-page quiz game about navigation and STEM, with streaks, badges, sound effects, and a confetti celebration
+- [02-knowledge-keeper.md](02-knowledge-keeper.md) — a knowledge card app with flip-to-reveal cards, search, and a collectible "Knowledge Passport" page
+- [03-stem-journey-map.md](03-stem-journey-map.md) — a multi-page STEM journey planner with an animated trail map and a celebration certificate page
+- [04-build-your-own-spec.md](04-build-your-own-spec.md) — a student prompt that helps generate a requirements/spec document before building, including page structure and a wow-factor feature
+- [05-follow-up-prompts.md](05-follow-up-prompts.md) — extra prompts for accessibility, mobile layout, debugging, README, demo prep, going multi-page, and adding gamified polish
 
 ## Quick use
 

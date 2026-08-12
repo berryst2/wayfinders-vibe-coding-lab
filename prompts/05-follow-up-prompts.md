@@ -20,6 +20,18 @@ Test the code for a phone-sized screen around 375 pixels wide. Update style.css 
 Add engaging visual and interactive elements to the website using a few clearly labelled placeholder images, simple icons, and optional subtle sound or motion effects that help tell the story and hold the audience's attention. You may include a small gallery, story cards, a media section, or a second supporting section if it improves the experience. Give every image useful alt text and add a short caption. Do not download copyrighted images and do not use remote image links. Keep the page responsive and explain where I should put my own image files, audio files, and which HTML values I should change. If needed, create a small asset folder or extra supporting page, but keep the project simple and friendly for GitHub Pages.
 ```
 
+## Turn this into a multi-page site
+
+```text
+My website is currently on one page. Split it into a small connected multi-page site using plain HTML files that share the same style.css. Keep the home page as index.html with an overview and a nav bar, then move my main feature to its own page (for example feature.html). Add matching navigation links and the same header and footer on every page so it feels like one site. Do not change or remove any of my existing content or features, just reorganise it across pages. Tell me which files you created and how the pages link together.
+```
+
+## Add a wow-factor upgrade
+
+```text
+Make my website feel more fun and exciting for a young audience. Add a small celebration animation (like confetti or sparkles) built with CSS or JavaScript for a key achievement moment, a badge or streak system if it fits my app, and a short playful sound effect using the Web Audio API with a mute toggle so it is never annoying. Keep all animations respectful of prefers-reduced-motion. Do not change my core content or remove existing features. Tell me what you added and what I should test.
+```
+
 ## Website quality check before publishing
 
 ```text
