@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>Wayfinders Vibe Coding Lab</h1>
-    <p>Build a web app or game with GitHub Copilot and publish it with GitHub Pages.</p>
+    <p>Build one connected web application, module by module, with GitHub Copilot.</p>
   </header>
 
   <nav class="top-nav" aria-label="Page sections">
@@ -33,16 +33,16 @@
          High-level flow so students see the whole journey first.
          ============================================================ -->
     <section class="hero" id="overview">
-      <h2>How students can build their own app</h2>
+      <h2>Build your Wayfinder Hub</h2>
       <p>
-        This project is a starter for students who want to create a small web app, quiz,
-        game, story page, or learning tool using HTML, CSS, and JavaScript. You do not need
-        to be an expert, and you do not need to install anything. You just need a clear idea
-        and a little patience.
+        In this multi-session lab, each exercise adds a connected module to one web
+        application. Start with a dashboard, then add knowledge cards, a quiz, a STEM
+        journey, a story map, creative media, data, challenges, and games. Earlier work
+        becomes the content for later exercises, so your application grows with you.
       </p>
 
       <div class="flow" role="list">
-        <span class="flow-step" role="listitem"><span class="flow-icon">💡</span>Pick an idea</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">🏠</span>Build the Hub</span>
         <span class="flow-arrow" aria-hidden="true">→</span>
         <span class="flow-step" role="listitem"><span class="flow-icon">🔑</span>Sign up</span>
         <span class="flow-arrow" aria-hidden="true">→</span>
@@ -50,9 +50,9 @@
         <span class="flow-arrow" aria-hidden="true">→</span>
         <span class="flow-step" role="listitem"><span class="flow-icon">💻</span>Open Codespaces</span>
         <span class="flow-arrow" aria-hidden="true">→</span>
-        <span class="flow-step" role="listitem"><span class="flow-icon">🤖</span>Vibe code with Copilot</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">🧩</span>Add modules</span>
         <span class="flow-arrow" aria-hidden="true">→</span>
-        <span class="flow-step" role="listitem"><span class="flow-icon">🧪</span>Test it</span>
+        <span class="flow-step" role="listitem"><span class="flow-icon">🔗</span>Connect and test</span>
         <span class="flow-arrow" aria-hidden="true">→</span>
         <span class="flow-step" role="listitem"><span class="flow-icon">🚀</span>Publish</span>
         <span class="flow-arrow" aria-hidden="true">→</span>
@@ -74,9 +74,9 @@
         <li>An internet connection</li>
         <li>A free <a href="https://github.com" target="_blank" rel="noopener">GitHub.com</a> account (Step 1 below)</li>
         <li>Access to GitHub Copilot (through your school, GitHub Education, or GitHub Copilot Free)</li>
-        <li>About 45&ndash;60 minutes</li>
+        <li>Several class sessions, with one working module completed in each session</li>
       </ul>
-      <p class="note">Nothing needs to be installed. All the coding happens in the browser using GitHub Codespaces.</p>
+      <p class="note">Nothing needs to be installed. For a 90-minute sampler, build the Hub foundation and one core module.</p>
     </section>
 
     <!-- ============================================================
@@ -147,47 +147,77 @@
     </section>
 
     <!-- ============================================================
-         STEP 5: BUILD - the real prompt files live in /prompts
+         STEP 5: BUILD - each prompt extends the same student app
          ============================================================ -->
     <section class="feature" id="build">
-      <h2><span class="step-badge">5</span>Choose your build prompt</h2>
+      <h2><span class="step-badge">5</span>Build one connected module at a time</h2>
       <p>
-        Pick one scenario below and select <strong>View &amp; copy prompt</strong>. A panel slides in
-        from the right with the ready-to-use prompt so you can copy it without leaving this page.
-        You can also browse every file in the <a href="prompts/student-prompts.md">prompts folder</a> directly.
+        Begin with the foundation, then follow the numbered pathway. Each prompt extends
+        the application in the <code>app</code> folder and reuses work from earlier modules.
+        Select <strong>View &amp; copy prompt</strong> to open the next exercise, or see the full
+        <a href="prompts/student-prompts.md">student prompt pathway</a>.
       </p>
 
+      <div class="pathway-heading">
+        <p class="pathway-kicker">Session 1 &middot; Required</p>
+        <h3>Foundation</h3>
+      </div>
+      <div class="prompt-grid">
+        <article class="prompt-card prompt-card-foundation">
+          <p class="module-meta">Start here &middot; No prerequisites</p>
+          <h3>🏠 Wayfinder Hub foundation</h3>
+          <p>Create the dashboard, profile, shared navigation, saved progress, achievements, and placeholders that every later module will extend.</p>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/00-wayfinder-hub-foundation.md" data-prompt-title="🏠 Wayfinder Hub foundation">View &amp; copy prompt</button>
+        </article>
+      </div>
+
+      <div class="pathway-heading">
+        <p class="pathway-kicker">Sessions 2&ndash;4 &middot; Core</p>
+        <h3>Build reusable content and progress</h3>
+      </div>
       <div class="prompt-grid">
         <article class="prompt-card">
-          <h3>🧭 Navigation quiz</h3>
-          <p>A multi-page quiz game about navigation, the stars, and wayfinding with streaks, badges, sound effects, and a confetti finish.</p>
-          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/01-navigation-quiz.md" data-prompt-title="🧭 Navigation quiz">View &amp; copy prompt</button>
+          <p class="module-meta">Build after Foundation</p>
+          <h3>📖 Knowledge Keeper</h3>
+          <p>Create knowledge cards that become source material for later quizzes, maps, media, and games.</p>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/02-knowledge-keeper.md" data-prompt-title="📖 Knowledge Keeper">View &amp; copy prompt</button>
         </article>
 
         <article class="prompt-card">
-          <h3>📖 Knowledge keeper</h3>
-          <p>A card-based app with flip-to-reveal facts, a search box, and a collectible "Knowledge Passport" page.</p>
-          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/02-knowledge-keeper.md" data-prompt-title="📖 Knowledge keeper">View &amp; copy prompt</button>
+          <p class="module-meta">Build after Knowledge Keeper</p>
+          <h3>🧭 Navigation Quiz</h3>
+          <p>Turn your knowledge cards into questions, explanations, scores, streaks, and shared achievements.</p>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/01-navigation-quiz.md" data-prompt-title="🧭 Navigation Quiz">View &amp; copy prompt</button>
         </article>
 
         <article class="prompt-card">
-          <h3>🗺️ STEM journey map</h3>
-          <p>A multi-page journey planner with an animated trail map and a celebration certificate page.</p>
-          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/03-stem-journey-map.md" data-prompt-title="🗺️ STEM journey map">View &amp; copy prompt</button>
+          <p class="module-meta">Build after Foundation</p>
+          <h3>🗺️ STEM Journey</h3>
+          <p>Save a goal, milestones, and a next action that later map and challenge modules can reuse.</p>
+          <button type="button" class="prompt-open-btn" data-prompt-file="prompts/03-stem-journey-map.md" data-prompt-title="🗺️ STEM Journey">View &amp; copy prompt</button>
         </article>
+      </div>
 
+      <div class="pathway-heading">
+        <p class="pathway-kicker">Flexible &middot; Design and advanced work</p>
+        <h3>Customize or extend your Hub</h3>
+      </div>
+      <div class="prompt-grid">
         <article class="prompt-card">
           <h3>✏️ Build your own spec</h3>
-          <p>Not sure what to build? Answer a few questions and Copilot will write your project brief for you.</p>
+          <p>Design an additional module that declares what earlier data it uses and what it contributes to the Hub.</p>
           <button type="button" class="prompt-open-btn" data-prompt-file="prompts/04-build-your-own-spec.md" data-prompt-title="✏️ Build your own spec">View &amp; copy prompt</button>
         </article>
 
         <article class="prompt-card">
+          <p class="module-meta">Optional &middot; Build after Foundation</p>
           <h3>🎮 Interactive arcade game</h3>
-          <p>A real-time Canvas game with keyboard and touch controls, lives, score, sound effects, and a saved high score.</p>
+          <p>An advanced Canvas game that will eventually report its high score and achievements to the Hub.</p>
           <button type="button" class="prompt-open-btn" data-prompt-file="prompts/06-interactive-game.md" data-prompt-title="🎮 Interactive arcade game">View &amp; copy prompt</button>
         </article>
       </div>
+
+      <p class="note">Connected extension prompts for the Story Map, Media Studio, Data Explorer, Challenge Board, Escape Game, and final integration are the next implementation stage.</p>
 
       <h3>How to paste your prompt into Copilot Chat in VS Code</h3>
       <p>Your Codespace is really Visual Studio Code running in the browser, so Copilot Chat works the same way it would on a computer.</p>
@@ -196,8 +226,8 @@
         <li>At the bottom of the Chat panel, make sure <strong>Agent</strong> mode is selected so Copilot can edit your files directly.</li>
         <li>Select a prompt card above, then select <strong>Copy prompt</strong> in the panel that slides in from the right.</li>
         <li>Click inside the Copilot Chat box, paste the prompt, and press <strong>Enter</strong> to send it.</li>
-        <li>Copilot will edit <code>index.html</code>, <code>style.css</code>, and <code>script.js</code>. Review the changes it made, then select <strong>Keep</strong> to apply them.</li>
-        <li>Refresh your preview tab to see the result.</li>
+        <li>Copilot will create or update files inside <code>app</code>. Review the changes it made, then select <strong>Keep</strong> to apply them.</li>
+        <li>Open or refresh <code>/app/</code> in your preview tab to see the result.</li>
       </ol>
 
       <p class="note">Paste one prompt at a time. Read what Copilot changed, then preview your app before asking for the next change.</p>
@@ -284,9 +314,11 @@
         <li><label><input type="checkbox" data-check="account" /> Created my GitHub.com account</label></li>
         <li><label><input type="checkbox" data-check="copy" /> Made my own copy of the project</label></li>
         <li><label><input type="checkbox" data-check="codespace" /> Opened my project in Codespaces</label></li>
-        <li><label><input type="checkbox" data-check="prompt" /> Chose a prompt file and pasted it into Copilot</label></li>
-        <li><label><input type="checkbox" data-check="iterate" /> Asked follow-up prompts to improve my app</label></li>
-        <li><label><input type="checkbox" data-check="tested" /> Tested my app in the browser and on mobile</label></li>
+        <li><label><input type="checkbox" data-check="hub-foundation" /> Built and tested my Wayfinder Hub foundation</label></li>
+        <li><label><input type="checkbox" data-check="core-module" /> Added a core module without replacing the Hub</label></li>
+        <li><label><input type="checkbox" data-check="connection" /> Reused information from one module in another</label></li>
+        <li><label><input type="checkbox" data-check="regression" /> Retested my dashboard and an earlier module</label></li>
+        <li><label><input type="checkbox" data-check="tested" /> Tested my Hub with a keyboard and narrow screen</label></li>
         <li><label><input type="checkbox" data-check="published" /> Published my app with GitHub Pages</label></li>
         <li><label><input type="checkbox" data-check="shared" /> Shared my live link with others</label></li>
       </ul>

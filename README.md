@@ -1,230 +1,170 @@
 # Wayfinders Vibe Coding Lab
 
-Welcome. In this lab you will use **GitHub Copilot** to build your own web app, and publish it to the internet with **GitHub Pages**.
+Use GitHub Copilot to build one connected web application, module by module,
+in a multi-session course and publish it with GitHub Pages. No previous coding
+experience is required.
 
-You do not need any coding experience. You bring the idea. Copilot helps with the code.
+## What you will build
 
----
+Your final application is called **Wayfinder Hub**. It begins with a dashboard
+and grows across several class sessions:
 
-## What you are going to build
+1. Hub foundation and student profile
+2. Knowledge Keeper cards
+3. Navigation Quiz
+4. STEM Journey
+5. Story and Route Map
+6. Creative Media Studio
+7. Data Explorer
+8. Community Challenge Board
+9. Wayfinder Escape Game
+10. Final integration and publication
 
-A simple web app that tells a story, teaches something, or shares knowledge that matters to you.
+The Canvas arcade game is an optional advanced module. You can also design a
+custom module that follows the same shared-data rules.
 
-It could be:
+Each exercise reuses something built earlier. For example, a Knowledge Keeper
+entry can become a quiz explanation, a map stop, a media story, and a clue in
+the final game.
 
-- A knowledge keeper app (words, places, stories, patterns)
-- A quiz game
-- A journey map about your future in STEM
-- A pattern or design story page
-- Your own idea
+## Guide and application
 
-**Your app must include:**
+This repository contains two different experiences:
 
-1. A title and short description
-2. Three content sections or cards
-3. One interactive feature (a button, quiz, reveal, or game)
-4. Your own colours and words
-5. A published link
+- The website at the repository root is the **lab guide**. Keep it intact.
+- The application you build lives in the **`app` folder**.
 
----
+In a local preview, open `/app/` to see your application. After publishing, its
+address will be:
 
-## The tools
+```text
+https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/app/
+```
+
+## Tools
 
 | Tool | What it does |
 |---|---|
-| GitHub repository | Holds your files |
-| GitHub Codespaces | Your coding environment, in the browser. Nothing to install. |
-| GitHub Copilot | Your AI coding buddy |
-| GitHub Pages | Publishes your finished app to a real web address |
+| GitHub repository | Holds your guide and application files |
+| GitHub Codespaces | Provides a coding environment in the browser |
+| GitHub Copilot | Helps create, explain, test, and improve the code |
+| GitHub Pages | Publishes the guide and application |
 
----
+## Start the course
 
-## Step by step
+### 1. Make your own copy
 
-### Step 1. Make your own copy
+1. Select **Fork** at the top of this repository.
+2. Keep the repository public so GitHub Pages can publish it for free.
+3. Open your new copy under your own GitHub account.
 
-1. At the top of this repository, select **Use this template** → **Create a new repository**.
-2. Give it a name, for example `starpath-navigator`.
-3. Set it to **Public** (this is needed for free GitHub Pages publishing).
-4. Select **Create repository**.
+### 2. Open a codespace
 
-### Step 2. Open your codespace
+1. Select **Code**, then the **Codespaces** tab.
+2. Select **Create codespace on main**.
+3. Wait for Visual Studio Code to open in the browser.
 
-1. In *your* new repository, select **Code**.
-2. Select the **Codespaces** tab.
-3. Select **Create codespace on main**.
-4. Wait about a minute for it to load.
+### 3. Start the preview
 
-You should see `index.html`, `style.css`, `script.js` and `README.md` in the file list on the left.
-
-### Step 3. See your app running
-
-Your codespace starts a preview automatically.
-
-1. Select the **Ports** tab at the bottom.
-2. Find port **8080** ("My web app").
-3. Select the globe icon to open it in a browser tab.
-
-If nothing appears, open the terminal and run:
+Open a terminal and run:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then open port 8080 from the **Ports** tab.
+Open port 8080 from the **Ports** tab. The root page is your guide. Your Hub
+will appear at `/app/` after the first exercise.
 
-### Step 4. Meet your files
+### 4. Build the foundation
 
-Open GitHub Copilot Chat and ask:
+Open [prompts/00-wayfinder-hub-foundation.md](prompts/00-wayfinder-hub-foundation.md),
+copy its main prompt, and paste it into GitHub Copilot Chat in Agent mode.
 
-```
-Explain this project to me like I am a beginner.
-What does index.html do?
-What does style.css do?
-What does script.js do?
-Where do I change the title and colours?
-```
+Review the changes before keeping them. Confirm the root guide still works and
+the new Hub opens at `/app/`.
 
-### Step 5. Build your first version
+### 5. Follow the module pathway
 
-Fill in your app brief, then paste it into Copilot Chat:
+Use [prompts/student-prompts.md](prompts/student-prompts.md) for the ordered
+exercise list and prerequisites. For every exercise:
 
-```
-I am building a simple web app for my STEM class.
+1. Add only the next module.
+2. Test the new feature.
+3. Retest the dashboard and at least one earlier module.
+4. Commit and sync the working checkpoint.
+5. Demonstrate one connection between modules.
 
-App name:
-Audience:
-Purpose:
-Theme:
-Design vibe:
-Feature 1:
-Feature 2:
-Feature 3:
-Interactive feature:
+Do not ask Copilot to replace the application or create another standalone
+website. Every exercise must extend the existing `app` folder, register with the
+Hub, and use its shared state helpers.
 
-Please update index.html, style.css and script.js to create the first
-version of this app. Keep the code beginner friendly, add comments,
-and use only HTML, CSS and JavaScript.
-```
+## Suggested session rhythm
 
-Apply the changes, then refresh your preview tab.
+| Time | Activity |
+|---|---|
+| 0-10 minutes | Reopen the Hub and check saved data |
+| 10-20 minutes | Read the module goal and plan its connection |
+| 20-55 minutes | Build one focused module with Copilot |
+| 55-70 minutes | Test the new module and earlier work |
+| 70-80 minutes | Commit and sync |
+| 80-90 minutes | Demonstrate the new connection |
 
-### Step 6. Make it look good
+For a single 90-minute sampler, complete the Hub foundation and either
+Knowledge Keeper or STEM Journey. The complete connected application requires
+multiple sessions.
 
-```
-Improve the visual design of my app.
-My design vibe is: [ocean / stars / bright and playful / calm / futuristic]
-Improve the colours, spacing, buttons, cards and mobile layout.
-Keep it simple and easy to read.
-```
+## Publish
 
-### Step 7. Add your interactive feature
+1. Commit and sync all changes.
+2. Open the repository on GitHub.
+3. Select **Settings**, then **Pages**.
+4. Choose **Deploy from a branch**.
+5. Select branch **main** and folder **/ (root)**.
+6. Open both the root guide URL and the `/app/` application URL.
 
-```
-Add one interactive feature to my app inside the section with id "myFeature".
-I want: [a quiz with a score / click to reveal cards / a random message /
-journey steps / an image gallery]
-Update the HTML, CSS and JavaScript, and add comments explaining how it works.
-```
+## Completion checklist
 
-### Step 8. Fix anything broken
+**Foundation**
 
-```
-Something is not working in my web app.
-I expected: ...
-Instead this happens: ...
-Here is the code or error message: ...
-Explain the problem in simple language and show me how to fix it.
-```
+- [ ] Built the Hub dashboard, profile, navigation, and shared state
+- [ ] Confirmed profile changes survive a refresh
+- [ ] Confirmed reset affects the Hub but not the guide checklist
 
-### Step 9. Save your work
+**Connected modules**
 
-1. Select the **Source Control** icon in the left bar.
-2. Type a message like `Build my first version`.
-3. Select **Commit**, then **Sync Changes**.
+- [ ] Added at least three modules
+- [ ] Reused an earlier record in a later module
+- [ ] Displayed module progress on the dashboard
+- [ ] Retested earlier modules after each addition
 
-### Step 10. Publish with GitHub Pages
+**Quality and publication**
 
-1. Go to your repository on GitHub.
-2. Select **Settings** → **Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Branch: **main**, folder: **/ (root)**.
-5. Select **Save**.
-6. Wait a minute, then refresh. Your live link appears at the top.
+- [ ] Tested with a keyboard and narrow screen
+- [ ] Checked empty states, long text, and browser console errors
+- [ ] Committed and synced each working checkpoint
+- [ ] Published the Hub with GitHub Pages
+- [ ] Prepared a demonstration that follows one artifact across modules
 
-Your app will be published at:
+## What to share
 
-```
-https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
-```
+Do not publish anything private, sacred, or personal. Use knowledge and media
+that you have permission to share. Add captions, source details, and attribution
+where appropriate.
 
-### Step 11. Test your live app
+Facilitators hold the cultural integrity of the programme. Technology supports
+the learning but does not decide what knowledge should be shared.
 
-- Open the link
-- Test every button
-- Check the spelling
-- Make the window narrow to test the mobile view
-- If something needs fixing, go back to your codespace, change it, commit and sync again
+## Resources
 
-### Step 12. Write your demo
-
-```
-Help me write a 30 second demo script for my app.
-My app is called: ...
-It helps people: ...
-My favourite feature is: ...
-I learned: ...
-Write it in a confident, natural student voice.
-```
-
----
-
-## Your checklist
-
-**Plan**
-- [ ] Chose my app idea
-- [ ] Wrote my idea in one sentence
-- [ ] Completed my app brief
-- [ ] Sketched my layout
-
-**Build**
-- [ ] Created my repository
-- [ ] Opened my codespace
-- [ ] Saw my app running in the preview
-- [ ] Updated the title and text
-- [ ] Updated the colours
-- [ ] Added my interactive feature
-- [ ] Tested my app
-
-**Publish**
-- [ ] Committed and synced my changes
-- [ ] Enabled GitHub Pages
-- [ ] Opened my live link
-- [ ] Added my live link to this README
-- [ ] Prepared my demo
-
----
+- [Student prompt pathway](prompts/student-prompts.md)
+- [Follow-up prompts](prompts/05-follow-up-prompts.md)
+- [Facilitator notes](prompts/facilitator-prompts.md)
+- [Example specifications](examples/)
 
 ## My project
 
-Fill this in as you go.
-
 - **App name:**
-- **What it does:**
-- **Live link:**
+- **Published Hub link:**
+- **Modules completed:**
+- **A connection I am proud of:**
 - **What I learned:**
-
----
-
-## A note on what you share
-
-You do not need to share anything private, sacred or personal. Choose a story,
-theme, word, pattern, journey or game idea that you are comfortable turning
-into a simple digital experience.
-
----
-
-## Helpful prompts
-
-More prompts are in the [`prompts`](prompts/) folder.
-Example app ideas are in the [`examples`](examples/) folder.

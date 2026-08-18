@@ -1,25 +1,80 @@
 # Student prompt pack
 
-Choose one scenario file below and copy the prompt into GitHub Copilot Chat or Copilot Agent.
+These exercises build one connected application called **Wayfinder Hub**. Start
+with Exercise 0, then add one module at a time. Do not replace your earlier work
+when you begin a new exercise.
 
-Use this as a simple index so you can add more examples later without crowding one file.
+Your lab guide stays at the repository root. Your cumulative application lives
+in the `app` folder and opens at `/app/` in your preview or published site.
 
-## Available prompt files
+## The pathway
 
-- [01-navigation-quiz.md](01-navigation-quiz.md) — a multi-page quiz game about navigation and STEM, with streaks, badges, sound effects, and a confetti celebration
-- [02-knowledge-keeper.md](02-knowledge-keeper.md) — a knowledge card app with flip-to-reveal cards, search, and a collectible "Knowledge Passport" page
-- [03-stem-journey-map.md](03-stem-journey-map.md) — a multi-page STEM journey planner with an animated trail map and a celebration certificate page
-- [04-build-your-own-spec.md](04-build-your-own-spec.md) — a student prompt that helps generate a requirements/spec document before building, including page structure and a wow-factor feature
-- [05-follow-up-prompts.md](05-follow-up-prompts.md) — extra prompts for accessibility, mobile layout, debugging, README, demo prep, going multi-page, and adding gamified polish
-- [06-interactive-game.md](06-interactive-game.md) — a real-time Canvas arcade game with keyboard and touch controls, lives, score, sound effects, and a saved high score
+### Foundation
 
-## Quick use
+1. [00-wayfinder-hub-foundation.md](00-wayfinder-hub-foundation.md) — create the
+	dashboard, profile, shared navigation, module registry, and saved state used
+	by every later exercise
 
-1. Open the scenario file you want.
-2. Copy the entire prompt block.
-3. Paste it into Copilot Chat.
-4. Review the proposed changes.
-5. Preview the site and test the interactive features.
-6. If the idea benefits from richer media, add extra sections, imagery, sound, animations, or a second page instead of limiting the project to a single file.
+### Core modules
 
-> Tip: Keep each prompt focused on one idea, but do not be afraid to add engaging visuals, interactive elements, and supporting content that helps the audience stay interested and understand the information.
+2. [02-knowledge-keeper.md](02-knowledge-keeper.md) — create reusable knowledge
+	cards that later quizzes, maps, media, and games can reference
+3. [01-navigation-quiz.md](01-navigation-quiz.md) — test knowledge from the cards
+	and save scores, streaks, and achievements to the Hub
+4. [03-stem-journey-map.md](03-stem-journey-map.md) — create goals, milestones,
+	next actions, and a summary that connects to the dashboard
+
+### Connected extensions
+
+These exercise files are being added to the lab. Their intended order is:
+
+5. `07-story-map-builder.md` — combine knowledge entries and journey milestones
+	into one interactive route
+6. `08-creative-media-studio.md` — attach sourced images, audio, video, captions,
+	and transcripts to existing content
+7. `09-data-explorer.md` — collect observations and turn them into summaries and
+	accessible charts
+8. `10-community-challenge-board.md` — turn goals and observations into actions,
+	evidence, and reflections
+9. `11-wayfinder-escape-game.md` — create puzzles from knowledge, quiz, map, and
+	data clues
+
+### Advanced and capstone work
+
+10. [06-interactive-game.md](06-interactive-game.md) — optional advanced Canvas
+	 arcade game that reports scores and achievements to the Hub
+11. `12-capstone-integration.md` — connect, test, personalize, and publish the
+	 complete application
+
+[04-build-your-own-spec.md](04-build-your-own-spec.md) helps you design an
+additional module. [05-follow-up-prompts.md](05-follow-up-prompts.md) contains
+prompts for testing, accessibility, mobile layout, debugging, and presentation.
+
+## Prerequisites
+
+| Exercise | Build first | Reuses |
+|---|---|---|
+| Hub foundation | Nothing | Shared shell and browser storage |
+| Knowledge Keeper | Hub foundation | Profile, registry, progress |
+| Navigation Quiz | Knowledge Keeper | Knowledge entry IDs and explanations |
+| STEM Journey | Hub foundation | Profile, registry, progress |
+| Story Map | Knowledge Keeper and STEM Journey | Entries and milestones |
+| Media Studio | Knowledge Keeper or Story Map | Existing content IDs |
+| Data Explorer | Hub foundation | Shared state and dashboard |
+| Challenge Board | STEM Journey and Data Explorer | Goals and observations |
+| Escape Game | Quiz and Story Map | Questions, clues, and route stops |
+| Arcade Game | Hub foundation | Preferences and achievements |
+| Capstone | All modules you selected | The complete application |
+
+## How to complete each exercise
+
+1. Open the next exercise file and read what it adds to your Hub.
+2. Copy only its main `text` prompt into GitHub Copilot Chat in Agent mode.
+3. Review the proposed file changes before keeping them.
+4. Open `/app/` and test the new module.
+5. Retest the dashboard and at least one earlier module.
+6. Complete the exercise checklist, then commit and sync your changes.
+7. Demonstrate one new connection between modules to another student.
+
+> Build one module at a time. Reusing an earlier record is more important than
+> adding lots of disconnected features.

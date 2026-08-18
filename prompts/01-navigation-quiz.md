@@ -1,120 +1,141 @@
-# Option 1: Build a navigation quiz game
+# Exercise 2: Add Navigation Quiz to the Hub
 
-Copy everything below into GitHub Copilot Chat or Copilot Agent:
+## Prerequisites
+
+Complete the Hub foundation and
+[Knowledge Keeper](02-knowledge-keeper.md). Your Knowledge Keeper should contain
+at least three entries because every quiz question must link to a source entry.
+
+## What this module contributes
+
+Navigation Quiz turns knowledge records into playable questions. Scores,
+attempts, streaks, and badges feed the shared dashboard. Answer explanations
+take students back to the Knowledge Keeper source.
 
 ```text
-Build a multi-page website called "StarPath Quiz". The purpose is to teach how people use stars, the ocean, and technology to navigate, with a special focus on how Māori and Pacific navigators have used observation, memory, and practical tools to travel across the Pacific Ocean.
+Extend my existing Wayfinder Hub in the app folder with a Navigation Quiz
+module. Do not replace the application shell or create quiz.html, learn.html,
+another index.html, another navigation bar, or a new localStorage key.
 
-Build this as a small connected multi-page website rather than one single page:
-- index.html - a home/landing page with the title, tagline, introduction, and the three information cards below, plus a nav bar linking to the other pages
-- learn.html - the "How navigation works" and "Māori and Pacific wayfinding" content, with tabs
-- quiz.html - the interactive quiz game itself, including the start screen, the questions, and the results screen
+Before editing, inspect the existing module registry, router, app-state helpers,
+shared UI helpers, and Knowledge Keeper implementation. Preserve their APIs and
+visual design.
 
-Give every page the same header, navigation bar, and footer so it feels like one connected site. Use plain HTML, CSS, and JavaScript only, sharing one style.css file. You can split script.js into a couple of small files (for example quiz.js) if that keeps the code organised. Feel free to add images, icons, simple sound effects, and animations that make the story and the game feel exciting. Keep everything beginner-friendly and GitHub Pages compatible. Avoid frameworks unless clearly needed.
+1. Register the module
+- Replace the quiz placeholder with a real module on the existing #quiz route.
+- Set Knowledge Keeper as its prerequisite.
+- If there are fewer than three knowledge entries, show a useful empty state
+  with a link to #knowledge instead of starting the quiz.
+- Consider the module complete after one finished attempt containing at least
+  five questions.
+- Generate dashboard status and progress from state.quiz.
 
-Home page (index.html) content:
-- Main heading: StarPath Quiz
-- Tagline: Read the sky, read the ocean, and read the way home.
-- Introduction: People have found their way across oceans for generations by carefully observing the natural world. Indigenous navigators from Aotearoa, the Pacific, and beyond have used stars, weather, swell, birds, and knowledge passed down through generations to guide their journeys. Today, navigators still use a mix of old knowledge and modern tools like compasses, maps, and GPS.
-- Add three information cards near the top:
-  1. Stars - Some stars act like signposts. Navigators learn where they rise, where they set, and how they move across the night sky.
-  2. Ocean - Swells, waves, wind, birds, and cloud patterns give clues about direction, distance, and land nearby.
-  3. Technology - Tools like compass, charts, and GPS can support navigation, but they work best alongside observation and knowledge.
-- Add a bold call-to-action button that links to quiz.html, for example "Start the quiz".
-- Keep the existing footer credit for the Wayfinders Vibe Coding Lab.
+2. Connected question data
+- Store questions in a clearly named array or module file, but store attempts
+  and progress through app-state.js.
+- Use this shape for every question:
+  {
+    id: "stable-question-id",
+    knowledgeId: "matching-knowledge-entry-id",
+    prompt: "Question text",
+    answers: ["Answer A", "Answer B", "Answer C", "Answer D"],
+    correctIndex: 0,
+    explanation: "Why the answer is correct",
+    difficulty: "easy"
+  }
+- Every knowledgeId must match an existing state.knowledge.entries record.
+- Include a question-building form that lets the student select a Knowledge
+  Keeper entry, write the prompt and four answers, choose the correct answer,
+  add an explanation, and choose a difficulty.
+- Validate missing fields, duplicate answer text, and invalid knowledge links.
+- Create stable question IDs once and preserve them when questions are edited.
+- Include an optional button that generates one editable starter question for
+  each current knowledge entry. Do not invent claims beyond the entry text.
 
-learn.html content - "Wayfinding traditions":
-- Add a section titled "How navigation works" with a simple 4-step explanation:
-  1. Observe the sky and ocean
-  2. Notice patterns and changes
-  3. Compare clues from multiple sources
-  4. Decide on the best travelling direction
-- Add a section titled "Māori and Pacific wayfinding" with 3 tabs or buttons labelled: Stars, Oceans, and Tools.
-  - Stars tab: explain specific star groups or navigation stars important to Māori and Pacific navigators, describe how they are used to find direction, and show how star patterns can indicate a route.
-  - Oceans tab: explain which oceans and sea regions were travelled, such as the Pacific Ocean, and describe how navigators read swell, tides, wind, and current to keep their direction.
-  - Tools tab: explain how traditional navigation tools such as charts, star maps, and practical instruments were created and used to support memory and travel.
-- Add a visual-style panel or mini infographic that shows a simple route map or trail map. This could be a stylised line across the Pacific, with a few labelled waypoints or islands, and a caption explaining how journey memory and observation helped guide travel.
-- Add a visual comparison area for technology tools: compass, star chart, GPS, and one traditional or handmade navigation aid.
-- Add a button at the bottom that links to quiz.html, for example "I'm ready, take me to the quiz".
+3. Quiz play
+- Add a start view with difficulty and round-length controls.
+- Show one random question at a time without repeating it in the same round.
+- Show four answer buttons, score, streak, question number, total, and an
+  accessible progress element.
+- After an answer, disable the choices, identify the correct answer without
+  relying on colour alone, show the explanation, and show a Next button.
+- Add a "Review source" link that opens #knowledge and requests the linked
+  knowledgeId. Update Knowledge Keeper to reveal or highlight that record when
+  opened from the quiz, using the existing router pattern rather than copying
+  the source text into another page.
+- Support keyboard operation and return focus to the new question heading.
 
-quiz.html - the game itself:
-- Add a start screen with the quiz title, a one-line explanation of the rules, and a big "Start Quiz" button.
-- Build a multiple-choice quiz with a big question pool, random question selection, and a score counter.
+4. Results and shared progress
+- Add each completed attempt to state.quiz.attempts with date, score, total,
+  difficulty, and the question IDs used.
+- Update state.quiz.bestScore and state.quiz.streak through app-state.js.
+- Show final score, an encouraging result, source entries to review, and Play
+  Again.
+- Award one non-duplicated shared achievement based on the percentage:
+  "star-navigator" at 80 percent or above, "wayfinder" at 50-79 percent, or
+  "explorer" below 50 percent.
+- Use the Hub's shared achievement, status, and celebration helpers.
+- Never access localStorage directly from the quiz module.
 
-Quiz requirements:
-- Show one question at a time.
-- Show four answer buttons.
-- Show the current question number and total number of questions attempted in that round.
-- Show the score.
-- Use a pool of at least 15 to 20 questions so the game feels dynamic and different each time.
-- Randomise the question order each game and avoid repeating the same question in a single round.
-- Show an animated progress bar that fills up smoothly as the quiz moves forward.
-- After an answer is selected, disable the answer buttons, show whether it was correct with a clear colour and icon (for example a green check or a red cross), explain the answer in one sentence, and reveal a Next Question button.
-- Add a "streak" indicator that celebrates consecutive correct answers, for example a small flame or star icon with text like "3 in a row!" after three or more correct answers in sequence.
-- Add a short, playful sound effect for correct and incorrect answers using the Web Audio API (no external audio files needed), plus a mute/sound-on toggle button so students can turn it off.
-- Make the score counter animate by counting up to the new number instead of jumping straight to it.
-- At the end, show a celebration results screen with:
-  - The final score and a short result message
-  - A fun on-screen confetti or sparkle animation built with CSS or JavaScript (no external libraries) when the player scores well
-  - A badge based on performance, for example "🌟 Star Navigator" for a high score, "🧭 Wayfinder" for a middle score, and "🌊 Explorer" for a lower score, each with an encouraging message
-  - A Play Again button that resets the quiz with a smooth transition
-  - A link back to learn.html for students who want to review the content again
+5. Sound, motion, and safety
+- Add short optional correct/incorrect tones with the Web Audio API only if the
+  existing Hub preferences provide a mute setting. Do not autoplay sound.
+- Keep score and progress animations subtle and respect prefers-reduced-motion.
+- Use clear focus styles, screen-reader result announcements, large touch
+  targets, and no horizontal scrolling.
+- Keep cultural content student-led. Questions must use knowledge the student
+  has permission to share and must not turn private or sacred content into a
+  game.
 
-Question bank examples (use these as a starting set and add more):
-1. Which star is commonly used to find north in the Northern Hemisphere? Polaris.
-2. What instrument helps a navigator detect magnetic direction? A compass.
-3. What does GPS use to calculate a person’s location? Satellites.
-4. Which clue can help a navigator notice nearby land at sea? Changes in birds, waves, or wind.
-5. Why do navigators use more than one clue? To confirm their position and reduce mistakes.
-6. What is one reason star positions are useful for navigation? They rise and set in predictable patterns.
-7. What can swell direction help a navigator notice? The direction of open water or the approach to land.
-8. What is a common purpose of a travel chart or map? To help a navigator plan a route and note landmarks.
-9. What type of knowledge is often passed down through generations in Pacific navigation traditions? Wayfinding knowledge and ocean memory.
-10. Why do navigators pay attention to cloud patterns? Clouds can change with land, weather, and wind conditions.
-11. What does a compass help a traveller do? Show direction relative to magnetic north.
-12. Why is it useful to learn the movement of stars across a night sky? It helps a navigator estimate direction and time at sea.
-13. Which natural environment can provide clues for direction? The ocean, wind, birds, and stars.
-14. What is one strength of combining technology with traditional knowledge? It can improve accuracy while still respecting local knowledge.
-15. Which type of information is often important for safe travel across wide ocean spaces? Wind, swell, weather, and stars.
-16. What might a navigator look for when trying to identify nearby islands? Birds, cloud shadow, water colour, or changes in swell.
-17. What is one reason Pacific navigators memorise routes? To keep knowledge alive and use it without relying only on devices.
-18. What is a skill that helps people navigate without a screen? Observation and memory.
-19. What do modern digital maps often use to calculate location? Satellite data and GPS signals.
-20. Why do navigators often check more than one clue before making a decision? Because different clues can confirm or challenge a direction.
+6. Regression boundaries
+- Do not change knowledge entry IDs when connecting the quiz.
+- Do not duplicate knowledge entries inside quiz state.
+- Missing source records must not crash the quiz. If a linked knowledge entry
+  is deleted, mark its questions unavailable and explain how the student can
+  repair or remove them.
+- Reset Quiz must clear only quiz attempts, best score, and streak after
+  confirmation. It must leave questions, Knowledge Keeper, profile, journey,
+  and guide checklist data intact.
 
-Create plausible wrong answers for each question. Keep every answer suitable for students and factually accurate.
+Keep the code beginner friendly with descriptive names and short functions.
+Add only a few useful comments around question selection, knowledge links,
+streak calculation, and shared-state updates.
 
-Design requirements:
-- Create a night-sky theme using deep navy, teal, white, and a small amount of gold, consistent across all three pages.
-- Make the quiz feel like a game: satisfying button animations, a bright celebration moment at the end, and clear visual feedback after every answer.
-- Use cards, tabs, and clear section headings on learn.html so the page feels educational and not crowded.
-- Make all buttons work with mouse and keyboard and include clear focus styles.
-- Make the layout fit phones and school laptops without horizontal scrolling.
-- Respect prefers-reduced-motion for any animation, including the confetti effect.
-- Include visual labels such as "Stars", "Oceans", "Tools", "Trail map", and "How it works" so students can quickly understand the page.
-
-Code and structure requirements:
-- Keep the code organised and easy for a beginner to edit.
-- Add only a few useful comments around the quiz data, tabs, streak logic, and sound effects.
-- Use clean array data for questions and answers.
-- Keep the logic beginner-friendly and easy to read.
-
-After editing, check that the HTML, CSS, and JavaScript have no obvious errors. Briefly tell me which files you changed and what I should test in the browser.
+After editing:
+1. Check for JavaScript errors.
+2. Test the dashboard, profile, and Knowledge Keeper again.
+3. Explain how knowledgeId creates the cross-module connection.
+4. Give me a focused manual test checklist.
 ```
 
----
+## Test before moving on
+
+- [ ] Quiz opens through Hub navigation and a direct `#quiz` URL.
+- [ ] With fewer than three entries, the module links back to Knowledge Keeper.
+- [ ] Every playable question references a current knowledge entry ID.
+- [ ] Random rounds do not repeat questions.
+- [ ] Correct, incorrect, streak, progress, and result states are accessible.
+- [ ] Review Source opens and identifies the linked Knowledge Keeper entry.
+- [ ] Attempts, best score, and achievements survive a refresh.
+- [ ] Missing source records are handled without a crash.
+- [ ] Reset Quiz leaves questions and all other module data unchanged.
+- [ ] Dashboard, Profile, and Knowledge Keeper still work after the change.
+
+## Connection checkpoint
+
+Demonstrate one question, answer it, and use Review Source to open the exact
+Knowledge Keeper record that supports its explanation.
 
 ## Optional follow-up prompts
 
 ```text
-Add a difficulty select on the start screen (Easy, Medium, Hard) that changes the number of questions and the time given per question. Keep the design consistent with the night-sky theme.
+Add a question management view where I can edit, archive, or repair quiz
+questions. Clearly mark questions whose knowledgeId no longer exists. Preserve
+stable question and knowledge IDs and do not add a new storage system.
 ```
 
 ```text
-Add an information tab called "Star examples" that includes a simple visual card for Polaris, the Southern Cross, and other navigation stars, with a short explanation of how each one helps with direction.
+Add a timed challenge mode. Pause the timer when the browser tab is hidden,
+respect reduced motion, keep the normal untimed mode, and store the selected
+mode with each completed attempt.
 ```
-
-```text
-Add a mini route map showing a voyage across the Pacific with labelled waypoints and a short story about how a navigator uses stars, swell, and memory together.
-```
-

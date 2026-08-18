@@ -1,60 +1,130 @@
-# Option 2: Build a cultural knowledge keeper
+# Exercise 1: Add Knowledge Keeper to the Hub
 
-This example uses fictional, non-sensitive content. Replace it later with knowledge you have permission to share.
+## Prerequisite
 
-Copy everything below into GitHub Copilot Chat or Copilot Agent:
+Complete [Exercise 0: Wayfinder Hub foundation](00-wayfinder-hub-foundation.md)
+first. This exercise extends the existing application in `app`; it does not
+create a separate website.
+
+Use fictional, non-sensitive content while building. Replace it only with
+knowledge you have permission to share.
+
+## What this module contributes
+
+Knowledge Keeper creates the shared content records used by later exercises.
+Each record has a stable ID so a quiz, map stop, media item, or puzzle can link
+back to the source instead of copying its text.
 
 ```text
-Build a multi-page website called "Knowledge Keeper" for students, families, and community members. Its purpose is to show how knowledge can be connected to language, place, observation, and people.
+Extend my existing Wayfinder Hub application in the app folder by building the
+real Knowledge Keeper module. Do not replace the Hub shell, router, dashboard,
+profile, state file, shared UI, or existing visual design. Do not create another
+index.html or a separate passport page.
 
-Build this as a small connected multi-page website rather than one single page:
-- index.html - a home page with the title, tagline, introduction, the reminder note, and the six knowledge cards with click-to-reveal detail and the search box
-- passport.html - a fun "Knowledge Passport" page that visually tracks which of the six cards a student has explored, like a collector's passport or bingo card
+Before editing, inspect app/modules/app-state.js, module-registry.js, router.js,
+and shared-ui.js. Follow their existing exported APIs and code style.
 
-Give both pages the same header, navigation bar, and footer so it feels like one connected site. Use plain HTML, CSS, and JavaScript only, sharing one style.css file, and feel free to add images, icons, simple sound effects, and animations that help the audience engage with the story. Keep everything beginner-friendly and GitHub Pages compatible. Avoid frameworks unless clearly needed.
+1. Module registration and route
+- Replace the knowledge placeholder in the module registry with a real module.
+- Use the existing #knowledge route and render inside the Hub main area.
+- Set its prerequisite to the Hub foundation and provide an isComplete rule.
+- Consider the module complete when the student has at least three knowledge
+  entries and has viewed each of those entries.
+- Make dashboard progress and status update from shared state.
 
-Home page (index.html) content:
-- Main heading: Knowledge Keeper
-- Tagline: Notice it. Learn it. Share it with care.
-- Introduction: Knowledge grows when people observe carefully, listen respectfully, and pass learning on with permission. Explore these example cards to see different ways knowledge can be held.
-- Add six knowledge cards using this fictional example content:
-  1. Sky - Watching cloud shapes and colours can help us notice changing weather.
-  2. Water - The movement and sound of water can tell us about wind and current.
-  3. Land - Plants, tracks, and soil provide clues about a place and its seasons.
-  4. Language - Words can carry history, relationships, and ways of understanding.
-  5. Making - Patterns and materials can show both creativity and practical knowledge.
-  6. People - Listening to trusted knowledge holders helps learning continue across generations.
-- Add a short reminder above the cards: Share only knowledge that is yours to share. Do not publish private, sacred, or personal information.
-- Add a link to passport.html near the top, for example "See my Knowledge Passport".
-- Keep the existing footer credit for the Wayfinders Vibe Coding Lab.
+2. Shared knowledge record
+- Store entries only in state.knowledge.entries through app-state.js.
+- Every entry must use this shape:
+  {
+    id: "stable-unique-id",
+    title: "Short title",
+    category: "sky",
+    summary: "One-line clue",
+    details: "Full explanation",
+    location: "Optional general place",
+    mediaIds: []
+  }
+- Store opened entry IDs in state.knowledge.viewedIds.
+- Create stable IDs once when records are added. Do not regenerate IDs when the
+  page renders or use an array position as an ID.
+- Never access localStorage directly from the Knowledge Keeper module.
 
-Make each card a keyboard-accessible button or interactive element with a playful flip or reveal animation. Initially show only its title and a one-line clue. When selected, the card should flip or expand smoothly to reveal the full explanation, and update its stamp on passport.html. Selecting it again should hide the explanation. Make the expanded state visually clear and expose it correctly to screen readers.
+3. Starter content and editing
+- If there are no entries, offer a button to add these six fictional examples:
+  Sky, Water, Land, Language, Making, and People.
+- Use the example ideas from the previous Knowledge Keeper exercise: weather
+  clues in clouds, movement of water, signs in plants and soil, meaning carried
+  by words, practical knowledge in making, and respectful listening to trusted
+  knowledge holders.
+- Also let the student add, edit, and delete their own entries with an in-app
+  form.
+- Require title, category, summary, and details. Location is optional and must
+  remain general rather than collecting precise or sensitive locations.
+- Confirm before deletion and show clear validation messages.
 
-Add a search input labelled "Find a knowledge card". Filter the six cards as the user types. Show a friendly message when no cards match and include a Clear Search button.
+4. Explore and search
+- Display entries in a responsive card grid.
+- Initially show the title, category, and summary. Let a keyboard-accessible
+  button reveal or hide the full details.
+- Update viewedIds the first time an entry is opened.
+- Add a labelled search input that filters title, category, summary, and details.
+- Add a category filter, Clear Filters button, result count, and useful no-match
+  message.
+- Keep expanded state clear visually and expose it with aria-expanded.
 
-passport.html - the "Knowledge Passport" page:
-- Show all six topics (Sky, Water, Land, Language, Making, People) as passport-style stamp slots.
-- A stamp fills in with colour and a small icon once the student has opened that card on the home page (use localStorage so progress is remembered between visits).
-- Show a friendly progress message such as "3 of 6 stamps collected".
-- When all six stamps are collected, show a celebration moment: a confetti or sparkle animation built with CSS or JavaScript (no external libraries) and a congratulations message such as "🏅 Knowledge Keeper Badge earned!".
-- Add a Reset Passport button that clears the saved progress after a confirmation, so a new student can start fresh.
+5. Knowledge Passport
+- Add a Passport view inside the same #knowledge module rather than creating a
+  second HTML page.
+- Include an Explore/Passport tab or segmented control with proper keyboard and
+  selected-state behavior.
+- Show one stamp for every current entry and whether its ID is in viewedIds.
+- Show progress such as "3 of 6 entries explored".
+- When every current entry has been viewed, add one shared achievement with the
+  ID "knowledge-keeper" and title "Knowledge Keeper". Do not add duplicates.
+- Use the Hub's shared celebration helper and respect reduced-motion settings.
+- Reset Passport must clear only knowledge viewedIds after confirmation. It must
+  not delete entries or reset other modules.
 
-Design requirements:
-- Use a warm natural palette with forest green, clay red, pale sky blue, off-white, and charcoal. Do not use cultural symbols or decorative patterns that have not been provided.
-- Use a clean two-column card grid on larger screens and one column on phones.
-- Make headings, labels, and focus states easy to see.
-- Make the layout fit phones and school laptops without horizontal scrolling.
-- Keep motion subtle and respect prefers-reduced-motion, including the confetti animation.
+6. Safety and accessibility
+- Display this reminder above the entries: "Share only knowledge that is yours
+  to share. Do not publish private, sacred, or personal information."
+- Do not introduce cultural symbols or patterns that were not provided.
+- Use semantic controls, visible focus, clear labels, screen-reader status
+  messages, and no horizontal scrolling.
+- Preserve the Hub's themes and responsive design.
 
-Keep the code organised and easy for a beginner to edit. Add only a few useful comments around the card data, reveal behavior, search filter, and passport progress logic.
+Keep functions short and names descriptive. Add only a few comments where the
+stable ID or shared-state connection needs explanation.
 
-After editing, check that the HTML, CSS, and JavaScript have no obvious errors. Briefly tell me which files you changed and what I should test in the browser.
+After editing:
+1. Check for JavaScript errors.
+2. Confirm the foundation dashboard and profile still work.
+3. Explain which files changed and how later modules can find an entry by ID.
+4. Give me a focused manual test checklist.
 ```
 
----
+## Test before moving on
+
+- [ ] Knowledge Keeper opens through the Hub navigation and a direct
+      `#knowledge` URL.
+- [ ] Starter records and student-created records survive a refresh.
+- [ ] Add, edit, delete, search, filter, reveal, and clear-filter controls work.
+- [ ] Every record keeps the same ID after edits and refreshes.
+- [ ] Passport stamps use viewed entry IDs and do not create duplicate badges.
+- [ ] Reset Passport leaves entries, profile, and other Hub data intact.
+- [ ] The dashboard shows Knowledge Keeper progress and completion.
+- [ ] Home, Profile, and placeholder modules still work.
+- [ ] The module works with keyboard navigation and in a narrow window.
+
+## Connection checkpoint
+
+Choose one entry and note its ID. The Navigation Quiz exercise will reference
+that exact ID when it creates a question and explanation.
 
 ## Optional follow-up prompt
 
 ```text
-Add a small filter for category such as sky, water, land, language, making, and people, and include a reset button for the filters.
+Add sorting by title, category, or recently edited. Keep stable entry IDs and
+the existing shared-state contract unchanged. Remember the chosen sort in the
+Wayfinder Hub profile preferences instead of using a new localStorage key.
 ```

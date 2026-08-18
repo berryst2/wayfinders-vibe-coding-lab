@@ -30,7 +30,15 @@ if (button && message) {
 //    so it is still checked off after the page refreshes.
 const checklistItems = document.querySelectorAll("#projectChecklist input[type='checkbox']");
 const progressLabel = document.getElementById("checklistProgress");
-const checklistStorageKey = "wayfinders-checklist";
+const checklistStorageKey = "wayfinders-pathway-checklist-v2";
+
+function loadChecklist() {
+  try {
+    return JSON.parse(localStorage.getItem(checklistStorageKey) || "{}");
+  } catch (error) {
+    return {};
+  }
+}
 
 function updateChecklistProgress() {
   if (!progressLabel || checklistItems.length === 0) return;
@@ -39,7 +47,7 @@ function updateChecklistProgress() {
 }
 
 if (checklistItems.length > 0) {
-  const saved = JSON.parse(localStorage.getItem(checklistStorageKey) || "{}");
+  const saved = loadChecklist();
 
   checklistItems.forEach(function (item) {
     if (saved[item.dataset.check]) {
@@ -47,7 +55,7 @@ if (checklistItems.length > 0) {
     }
 
     item.addEventListener("change", function () {
-      const current = JSON.parse(localStorage.getItem(checklistStorageKey) || "{}");
+      const current = loadChecklist();
       current[item.dataset.check] = item.checked;
       localStorage.setItem(checklistStorageKey, JSON.stringify(current));
       updateChecklistProgress();

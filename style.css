@@ -221,11 +221,40 @@ button:active {
   margin: 16px 0;
 }
 
+.pathway-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 30px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #dbe3ee;
+}
+
+.pathway-heading h3,
+.pathway-heading p {
+  margin: 0;
+}
+
+.pathway-kicker,
+.module-meta {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .prompt-card {
   background: var(--sky);
   border: 1px solid #dbe3ee;
   border-radius: var(--radius);
   padding: 18px;
+}
+
+.prompt-card-foundation {
+  border-left: 5px solid var(--bright-blue);
+  background: #eef5ff;
 }
 
 .prompt-card h3 {
@@ -237,6 +266,11 @@ button:active {
   margin: 0 0 10px;
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+.prompt-card .module-meta {
+  margin-bottom: 8px;
+  font-size: 0.76rem;
 }
 
 .prompt-card a {
