@@ -1,27 +1,48 @@
 # Facilitator notes and prompts
 
-## Before the session
+## Before the course
 
 - [ ] Create this repository under an org or account the students can reach
 - [ ] Mark it as a **template repository** (Settings → check *Template repository*)
-- [ ] Test the full flow yourself: template → codespace → edit → commit → Pages
+- [ ] Test the full flow yourself: fork → codespace → Hub foundation → one connected module → commit → Pages
 - [ ] Confirm the school network allows `github.com`, `*.github.dev` and `*.github.io`
 - [ ] Confirm student GitHub account availability, or plan for paired/shared accounts
 - [ ] Have a ZIP fallback of the starter files ready
-- [ ] Print the student checklist and prompt pack
-- [ ] Build 2–3 finished example apps to show at the start
+- [ ] Review all ten files in [student-prompts.md](student-prompts.md)
+- [ ] Build one connected example Hub with at least four modules
 
-## Timing guide (90 minutes, session 2)
+## Ten-session pathway
+
+| Session | Student outcome | Prompt |
+|---|---|
+| 1 | Hub shell, profile, state, registry, and dashboard | [00 Foundation](00-wayfinder-hub-foundation.md) |
+| 2 | Reusable knowledge records and passport | [02 Knowledge Keeper](02-knowledge-keeper.md) |
+| 3 | Questions linked to knowledge IDs | [01 Navigation Quiz](01-navigation-quiz.md) |
+| 4 | Goals and reusable milestone records | [03 STEM Journey](03-stem-journey-map.md) |
+| 5 | Route combining knowledge and milestones | [07 Story Map](07-story-map-builder.md) |
+| 6 | Accessible, attributed media attachments | [08 Media Studio](08-creative-media-studio.md) |
+| 7 | Safe observations and unit-aware visualization | [09 Data Explorer](09-data-explorer.md) |
+| 8 | Source-linked action and reflection | [10 Challenge Board](10-community-challenge-board.md) |
+| 9 | Source-linked puzzle synthesis | [11 Escape Game](11-wayfinder-escape-game.md) |
+| 10 | Integration, backup, accessibility, publishing, and demo | [12 Capstone](12-capstone-integration.md) |
+
+The [Canvas arcade game](06-interactive-game.md) and
+[custom module exercise](04-build-your-own-spec.md) are optional extensions and
+do not replace one of the ten required sessions.
+
+## Rhythm for each 90-minute session
 
 | Time | Activity |
 |---|---|
-| 0–10 | Recap and show finished examples |
-| 10–20 | Create repo from template, open codespace |
-| 20–35 | First version via Copilot |
-| 35–55 | Add the interactive feature |
-| 55–70 | Test and improve |
-| 70–80 | Commit, enable Pages, open live link |
-| 80–90 | Demo circle |
+| 0–10 | Reopen the Hub and verify saved data |
+| 10–20 | Review the module goal, prerequisites, and record connection |
+| 20–55 | Build one focused module with Copilot |
+| 55–70 | Test the new module and at least one earlier module |
+| 70–80 | Commit and sync the working checkpoint |
+| 80–90 | Demonstrate one cross-module connection |
+
+For a one-session sampler, complete Foundation plus Knowledge Keeper or STEM
+Journey. Do not present the sampler as the complete ten-session application.
 
 ## Common issues
 
@@ -31,8 +52,11 @@
 | Copilot not responding | Check the Copilot icon in the status bar and that the student is signed in |
 | Pages shows 404 | Repo must be **Public**, branch **main**, folder **/ (root)**, and give it 1–2 minutes |
 | Page loads but no styling | Check `style.css` is in the root and the `<link>` path is correct |
+| Hub is missing | Open `/app/`; the root URL is the lab guide |
+| An earlier module disappears | Undo the change and repeat the prompt with "extend the existing Hub; do not replace files or stable IDs" |
+| A linked record says unavailable | Open the source module and reconnect or remove the broken reference; do not recreate copied data |
 | Codespace slow to start | Pre-create codespaces before the session, or have students pair up |
-| Student stuck on ideas | Point them at `examples/` and let them copy one outright |
+| Student is behind | Use the current session's empty/sample state and preserve their existing Hub; optional modules can be skipped |
 
 ## Demo prompts to show on screen
 
@@ -41,12 +65,25 @@ Explain this project to me like I am a beginner.
 ```
 
 ```
-Change the colour theme of my app to warm sunset colours.
+Explain which existing record this module consumes and what stable record it
+will create for a later module.
 ```
 
 ```
-Add a five question quiz with a score counter to the section with id "myFeature".
+Extend the existing module without replacing the Hub or accessing localStorage
+directly. After the change, retest the dashboard and one earlier module.
 ```
+
+## Session checkpoint
+
+Before students commit, confirm:
+
+- The new module opens inside `/app/` through its Hub route.
+- Existing modules and stable IDs remain intact.
+- New records survive refresh through `app-state.js`.
+- At least one source or downstream connection is demonstrated.
+- Keyboard, narrow-screen, empty, and missing-source states are checked.
+- The browser console has no new errors.
 
 ## Cultural framing
 
@@ -62,4 +99,5 @@ the technology scaffolding.
 
 ## Success looks like
 
-Every student leaves able to say: *"I built that, and here is the link."*
+Every student can follow one artifact through several modules and say: *"I
+built that connection, tested it, and here is the published Hub."*

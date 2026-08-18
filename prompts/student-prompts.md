@@ -26,29 +26,31 @@ in the `app` folder and opens at `/app/` in your preview or published site.
 
 ### Connected extensions
 
-These exercise files are being added to the lab. Their intended order is:
-
-5. `07-story-map-builder.md` — combine knowledge entries and journey milestones
+5. [07-story-map-builder.md](07-story-map-builder.md) — combine knowledge entries and journey milestones
 	into one interactive route
-6. `08-creative-media-studio.md` — attach sourced images, audio, video, captions,
+6. [08-creative-media-studio.md](08-creative-media-studio.md) — attach sourced images, audio, video, captions,
 	and transcripts to existing content
-7. `09-data-explorer.md` — collect observations and turn them into summaries and
+7. [09-data-explorer.md](09-data-explorer.md) — collect observations and turn them into summaries and
 	accessible charts
-8. `10-community-challenge-board.md` — turn goals and observations into actions,
+8. [10-community-challenge-board.md](10-community-challenge-board.md) — turn goals and observations into actions,
 	evidence, and reflections
-9. `11-wayfinder-escape-game.md` — create puzzles from knowledge, quiz, map, and
+9. [11-wayfinder-escape-game.md](11-wayfinder-escape-game.md) — create puzzles from knowledge, quiz, map, and
 	data clues
 
-### Advanced and capstone work
+### Capstone
 
-10. [06-interactive-game.md](06-interactive-game.md) — optional fictional Canvas
-	 arcade challenge with fair timing, accessible modes, wow effects, shared
-	 scores, and Hub achievements
-11. `12-capstone-integration.md` — connect, test, personalize, and publish the
-	 complete application
+10. [12-capstone-integration.md](12-capstone-integration.md) — connect, test,
+	personalize, and publish the complete application
 
-[04-build-your-own-spec.md](04-build-your-own-spec.md) helps you design an
-additional module. [05-follow-up-prompts.md](05-follow-up-prompts.md) contains
+### Optional extensions
+
+- [06-interactive-game.md](06-interactive-game.md) — a fictional Canvas arcade
+  challenge with fair timing, accessible modes, wow effects, shared scores, and
+  Hub achievements
+- [04-build-your-own-spec.md](04-build-your-own-spec.md) — design another module
+  that follows the same registry, shared-state, connection, and testing rules
+
+[05-follow-up-prompts.md](05-follow-up-prompts.md) contains
 prompts for testing, accessibility, mobile layout, debugging, and presentation.
 
 ## Prerequisites
@@ -64,8 +66,8 @@ prompts for testing, accessibility, mobile layout, debugging, and presentation.
 | Data Explorer | Hub foundation | Shared state and dashboard |
 | Challenge Board | STEM Journey and Data Explorer | Goals and observations |
 | Escape Game | Quiz and Story Map | Questions, clues, and route stops |
-| Arcade Game | Hub foundation | Preferences, runs, scores, and achievements |
 | Capstone | All modules you selected | The complete application |
+| Optional Arcade Game | Hub foundation | Preferences, runs, scores, and achievements |
 
 ## How to complete each exercise
 

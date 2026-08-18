@@ -6,22 +6,23 @@ experience is required.
 
 ## What you will build
 
-Your final application is called **Wayfinder Hub**. It begins with a dashboard
-and grows across several class sessions:
+Your final application is called **Wayfinder Hub**. The complete pathway has
+ten class sessions, and every session has its own prompt:
 
-1. Hub foundation and student profile
-2. Knowledge Keeper cards
-3. Navigation Quiz
-4. STEM Journey
-5. Story and Route Map
-6. Creative Media Studio
-7. Data Explorer
-8. Community Challenge Board
-9. Wayfinder Escape Game
-10. Final integration and publication
+1. [Hub foundation and student profile](prompts/00-wayfinder-hub-foundation.md)
+2. [Knowledge Keeper cards](prompts/02-knowledge-keeper.md)
+3. [Navigation Quiz](prompts/01-navigation-quiz.md)
+4. [STEM Journey](prompts/03-stem-journey-map.md)
+5. [Story and Route Map](prompts/07-story-map-builder.md)
+6. [Creative Media Studio](prompts/08-creative-media-studio.md)
+7. [Data Explorer](prompts/09-data-explorer.md)
+8. [Community Challenge Board](prompts/10-community-challenge-board.md)
+9. [Wayfinder Escape Game](prompts/11-wayfinder-escape-game.md)
+10. [Final integration and publication](prompts/12-capstone-integration.md)
 
-The Canvas arcade game is an optional advanced module. You can also design a
-custom module that follows the same shared-data rules.
+The [Canvas arcade game](prompts/06-interactive-game.md) is an optional advanced
+module and is not counted as one of the ten required sessions. You can also
+design a custom module that follows the same shared-data rules.
 
 Each exercise reuses something built earlier. For example, a Knowledge Keeper
 entry can become a quiz explanation, a map stop, a media story, and a clue in
