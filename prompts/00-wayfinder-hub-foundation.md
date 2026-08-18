@@ -78,21 +78,47 @@ Build the following foundation:
 - Use the storage key "wayfinder-hub".
 - Start with this versioned state shape:
   {
-    version: 1,
-    profile: { name: "", theme: "ocean" },
+    version: 2,
+    profile: {
+      name: "",
+      theme: "ocean",
+      preferences: { soundEnabled: true, calmDisplay: false }
+    },
     knowledge: { entries: [], viewedIds: [] },
     quiz: { attempts: [], bestScore: 0, streak: 0 },
-    journey: { goal: "", milestones: [], nextAction: "" },
+    journey: {
+      goal: "",
+      milestones: [],
+      nextAction: "",
+      targetDate: "",
+      futurePostcard: ""
+    },
     map: { stops: [] },
     media: { items: [] },
     observations: { items: [] },
     challenges: { items: [] },
-    games: { escape: {}, arcade: {} },
+    games: {
+      escape: {},
+      arcade: {
+        runs: [],
+        bestScore: 0,
+        bestCombo: 0,
+        selectedDifficulty: "calm",
+        completed: false
+      }
+    },
     achievements: []
   }
 - Export small, clearly named helpers to load, save, update, and reset state.
-- If saved JSON is missing, malformed, or has an unsupported version, recover
-  with safe defaults without crashing.
+- Add a migration from version 1 to version 2 that preserves all existing
+  profile, knowledge, quiz, journey, map, media, observation, challenge, game,
+  and achievement data while adding the new nested defaults above.
+- Merge defaults recursively for known objects so a missing nested preference
+  or module field is added without replacing neighboring saved values. Do not
+  merge arrays by index or silently delete unknown student-created records.
+- If saved JSON is missing or malformed, recover with safe defaults without
+  crashing. If a future unsupported version is found, do not overwrite it;
+  show a recovery message and allow the student to reset deliberately.
 - The reset helper must remove only the "wayfinder-hub" key. It must not clear
   all localStorage because the lab guide stores its checklist separately.
 
@@ -130,6 +156,8 @@ After making the changes:
 - [ ] Every placeholder card opens a useful module description.
 - [ ] Saving a name and theme survives a browser refresh.
 - [ ] Malformed saved data does not break the application.
+- [ ] Version 1 sample data migrates to version 2 without losing saved records.
+- [ ] A future unsupported version is not silently overwritten.
 - [ ] Reset removes Hub progress but does not reset the lab guide checklist.
 - [ ] The Hub works in a narrow browser window and with keyboard navigation.
 - [ ] There are no errors in the browser console.

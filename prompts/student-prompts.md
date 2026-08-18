@@ -21,8 +21,8 @@ in the `app` folder and opens at `/app/` in your preview or published site.
 	cards that later quizzes, maps, media, and games can reference
 3. [01-navigation-quiz.md](01-navigation-quiz.md) — test knowledge from the cards
 	and save scores, streaks, and achievements to the Hub
-4. [03-stem-journey-map.md](03-stem-journey-map.md) — create goals, milestones,
-	next actions, and a summary that connects to the dashboard
+4. [03-stem-journey-map.md](03-stem-journey-map.md) — connect earlier learning to
+	goals, reflections, stable milestones, a future postcard, and a printable summary
 
 ### Connected extensions
 
@@ -41,8 +41,9 @@ These exercise files are being added to the lab. Their intended order is:
 
 ### Advanced and capstone work
 
-10. [06-interactive-game.md](06-interactive-game.md) — optional advanced Canvas
-	 arcade game that reports scores and achievements to the Hub
+10. [06-interactive-game.md](06-interactive-game.md) — optional fictional Canvas
+	 arcade challenge with fair timing, accessible modes, wow effects, shared
+	 scores, and Hub achievements
 11. `12-capstone-integration.md` — connect, test, personalize, and publish the
 	 complete application
 
@@ -57,13 +58,13 @@ prompts for testing, accessibility, mobile layout, debugging, and presentation.
 | Hub foundation | Nothing | Shared shell and browser storage |
 | Knowledge Keeper | Hub foundation | Profile, registry, progress |
 | Navigation Quiz | Knowledge Keeper | Knowledge entry IDs and explanations |
-| STEM Journey | Hub foundation | Profile, registry, progress |
+| STEM Journey | Hub foundation | Optional knowledge and achievement links; reusable milestones |
 | Story Map | Knowledge Keeper and STEM Journey | Entries and milestones |
 | Media Studio | Knowledge Keeper or Story Map | Existing content IDs |
 | Data Explorer | Hub foundation | Shared state and dashboard |
 | Challenge Board | STEM Journey and Data Explorer | Goals and observations |
 | Escape Game | Quiz and Story Map | Questions, clues, and route stops |
-| Arcade Game | Hub foundation | Preferences and achievements |
+| Arcade Game | Hub foundation | Preferences, runs, scores, and achievements |
 | Capstone | All modules you selected | The complete application |
 
 ## How to complete each exercise
