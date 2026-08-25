@@ -45,8 +45,10 @@ Map before editing. Follow their APIs and existing design.
 - Never access localStorage directly.
 
 3. Add and manage media
-- Support repository-relative asset paths and normal HTTPS URLs. Explain that
-  large files should not be added and remote links may stop working.
+- Support paths relative to app/index.html, such as assets/my-photo.jpg, for
+  files the student has added under app/assets, and support normal HTTPS URLs.
+  Explain that large repository files slow the site and remote links may stop
+  working.
 - Do not implement uploads, recording, camera, microphone, autoplay, or hidden
   network requests.
 - Validate type, source, permission, linked record, and accessibility fields.
@@ -59,11 +61,13 @@ Map before editing. Follow their APIs and existing design.
 
 4. Connected presentation
 - Show media beside its linked Knowledge Keeper card or Story Map stop by
-  looking it up through linkedType and linkedId. Update those modules only as
-  needed to render attached media IDs; do not duplicate media objects there.
+  filtering state.media.items by linkedType and linkedId. Update those modules
+  only as needed to render that derived list; do not add back-reference arrays
+  or duplicate media objects in source records.
 - Add Open Source Record links using the existing router focus pattern.
-- If a linked record disappears, mark the media item "Unattached" and let the
-  student reconnect or remove it.
+- If a linked record disappears, keep the media item, label it "Source
+  unavailable", and offer Choose a new source or Remove this media item. Do not
+  delete either source or dependent records automatically.
 - Include a text-only view listing titles, captions, transcripts, attribution,
   and source links.
 
@@ -92,7 +96,7 @@ text-only view, playback cleanup, source links, persistence, and reset scope.
 ## Completion check
 
 - [ ] Three accessible, attributed records are attached by stable source IDs.
-- [ ] Broken and unattached records have useful recovery controls.
+- [ ] Broken media and missing-source records have useful recovery controls.
 - [ ] No media autoplays and playback stops when views change.
 - [ ] Text-only content communicates the same essential information.
 - [ ] Reset Media leaves source modules and repository assets unchanged.

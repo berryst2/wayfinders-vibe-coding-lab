@@ -3,9 +3,9 @@
 ## What you will build
 
 In this first exercise, you will create the shared application that every later
-exercise will extend. The Wayfinder Hub will replace the existing website at
-the repository root so it opens directly at the main GitHub Pages URL. You will
-not need to add `/app/` to the address.
+exercise will extend. The repository-root website remains the lab guide. The
+Wayfinder Hub lives in `app` and opens at `/app/` in local preview and on GitHub
+Pages.
 
 By the end of this exercise, your Wayfinder Hub will have:
 
@@ -23,25 +23,25 @@ helpers created here. Do not replace the Hub when starting another exercise.
 Extend it one module at a time.
 
 ```text
-I am beginning a multi-session project called Wayfinder Hub. The existing files
-at the repository root may be replaced. Build the cumulative application
-directly in the repository root so it becomes the default GitHub Pages site.
+I am beginning a multi-session project called Wayfinder Hub. The existing
+index.html, style.css, and script.js at the repository root are the lab guide.
+Do not modify or replace them. Build the cumulative application in a new app
+folder so the guide and student application remain available together.
 
-Overwrite the existing root index.html, style.css, and script.js as needed.
-Do not create an app folder or require an /app/ URL. Use only HTML, CSS, and
-JavaScript. Do not use a framework, package manager, build step, backend,
-external API, or inline JavaScript event handlers.
+Use only HTML, CSS, and JavaScript. Do not use a framework, package manager,
+build step, backend, external API, or inline JavaScript event handlers.
 
 Create this structure at the repository root:
 
-index.html
-style.css
-script.js
-modules/
-  app-state.js
-  module-registry.js
-  router.js
-  shared-ui.js
+app/
+  index.html
+  style.css
+  script.js
+  modules/
+    app-state.js
+    module-registry.js
+    router.js
+    shared-ui.js
 
 Build the following foundation:
 
@@ -53,22 +53,47 @@ Build the following foundation:
 - Add a dashboard with a welcome message, overall progress, an achievements
   area, and cards for the modules listed below.
 - Make the layout responsive and usable with a keyboard.
-- Keep all paths relative so the app works at /REPOSITORY-NAME/ on GitHub
-  Pages and when previewed from the repository root.
+- Load app/script.js as an ES module with type="module". Keep imports and asset
+  paths relative within app so the Hub works at /REPOSITORY-NAME/app/ on GitHub
+  Pages and at /app/ in a local preview. Do not import files from the root guide.
 
 2. Hash router
 - Use URL hashes such as #home, #profile, and later #knowledge.
 - Put the routing logic in modules/router.js.
 - Unknown or empty hashes must safely show the dashboard.
+- Support optional focus parameters such as #knowledge?focus=entry-id. Parse the
+  query from the hash, not window.location.search, and pass decoded parameters
+  to the active view. This is how later modules open a specific source record.
+- Export parseRouteHash(), navigateTo(routeId, parameters), and
+  startRouter(onRouteChange). Keep rendering in app/script.js so there is one
+  route-change path.
+- Before rendering a new route, call cleanup on the previously active module
+  when it provides that function. This must also happen when navigating Home or
+  Profile so later timers, media, and game loops cannot continue in the background.
 - After a route changes, move keyboard focus to the rendered main heading.
 
 3. Module registry
 - Put module definitions in modules/module-registry.js.
-- Each definition must have: id, title, description, prerequisites, status,
-  render, and isComplete.
+- Export registerModule(definition), getModule(moduleId), and getModules().
+  Registering an existing id must replace that placeholder in place rather than
+  creating a duplicate or changing the dashboard order.
+- Each definition must have id, title, description, prerequisites, status,
+  render, and isComplete. Use arrays of module IDs for prerequisites; an empty
+  array means the foundation alone is sufficient. An optional prerequisiteMode
+  may be "all" (the default) or "any". render(container, routeContext) renders
+  inside #app, isComplete(state) returns a Boolean, and optional cleanup() stops
+  route-specific listeners, timers, animation frames, audio, or media.
 - Register these placeholders in this order: knowledge, quiz, journey, map,
   media, data, challenges, escape-game, and arcade-game.
 - Use the status values "ready", "locked", or "optional".
+- Start knowledge, journey, and data as "ready"; start arcade-game as
+  "optional"; and start the remaining modules as "locked" until their registry
+  prerequisites are complete. Recalculate locked/ready display from current
+  state rather than permanently rewriting the registered definition.
+- Later exercises should add one implementation file such as
+  modules/knowledge.js that exports its module definition, then import and
+  register that definition through module-registry.js. Do not put complete
+  feature implementations into app/script.js.
 - The dashboard and module navigation must be generated from this registry,
   not duplicated by hand in index.html.
 - Selecting an unfinished placeholder should show its title, purpose,
@@ -87,7 +112,7 @@ Build the following foundation:
       preferences: { soundEnabled: true, calmDisplay: false }
     },
     knowledge: { entries: [], viewedIds: [] },
-    quiz: { attempts: [], bestScore: 0, streak: 0 },
+    quiz: { questions: [], attempts: [], bestScore: 0, streak: 0 },
     journey: {
       goal: "",
       milestones: [],
@@ -95,12 +120,21 @@ Build the following foundation:
       targetDate: "",
       futurePostcard: ""
     },
-    map: { stops: [] },
+    map: { title: "", description: "", stops: [] },
     media: { items: [] },
-    observations: { items: [] },
+    observations: {
+      items: [],
+      story: { noticing: "", wondering: "", investigating: "" }
+    },
     challenges: { items: [] },
     games: {
-      escape: {},
+      escape: {
+        puzzles: [],
+        currentStage: 0,
+        startedAt: null,
+        completedRuns: [],
+        hintsUsed: 0
+      },
       arcade: {
         runs: [],
         bestScore: 0,
@@ -111,13 +145,23 @@ Build the following foundation:
     },
     achievements: []
   }
-- Export small, clearly named helpers to load, save, update, and reset state.
+- Achievement records use { id, title, earnedAt }, where earnedAt is an ISO 8601
+  date-time. Deduplicate them by id and preserve the earliest earnedAt value.
+- Export loadState(), getState(), saveState(nextState),
+  updateState(updateFunction), resetState(), and createId(prefix).
+  updateState receives the current state, applies one change, saves, and returns
+  the updated state. createId uses crypto.randomUUID() with the supplied prefix
+  and a safe uniqueness fallback when randomUUID is unavailable. Later modules
+  must use createId once when creating records and preserve that ID on edits.
 - Add a migration from version 1 to version 2 that preserves all existing
   profile, knowledge, quiz, journey, map, media, observation, challenge, game,
   and achievement data while adding the new nested defaults above.
 - Merge defaults recursively for known objects so a missing nested preference
   or module field is added without replacing neighboring saved values. Do not
   merge arrays by index or silently delete unknown student-created records.
+- Version 2 includes all defaults shown above. Later exercises may fill these
+  fields but do not need to increment the version. Missing version 2 fields are
+  restored by the recursive default merge without replacing saved values.
 - If saved JSON is missing or malformed, recover with safe defaults without
   crashing. If a future unsupported version is found, do not overwrite it;
   show a recovery message and allow the student to reset deliberately.
@@ -134,6 +178,11 @@ Build the following foundation:
 6. Shared UI helpers
 - Put reusable progress, achievement, status-message, and celebration helpers
   in modules/shared-ui.js.
+- Export renderProgress(current, total, label),
+  renderAchievements(achievements), showStatus(container, message, type),
+  awardAchievement(id, title), and celebrate(container). Status type must be
+  "info", "success", "warning", or "error". awardAchievement must use the
+  app-state helpers and return whether it added a new achievement.
 - Keep celebrations subtle and disable their motion when the user prefers
   reduced motion.
 - Show a useful empty state when there are no achievements yet.
@@ -152,9 +201,10 @@ After making the changes:
 
 ## Test before moving on
 
-- [ ] The Hub opens directly at the repository root in a local preview.
-- [ ] The Hub opens at `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/`
-  without adding `/app/`.
+- [ ] The root lab guide still opens and its original files are unchanged.
+- [ ] The Hub opens at `/app/` in a local preview.
+- [ ] The Hub opens at
+  `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/app/`.
 - [ ] Home and Profile can be opened with links and browser back/forward.
 - [ ] Every placeholder card opens a useful module description.
 - [ ] Saving a name and theme survives a browser refresh.

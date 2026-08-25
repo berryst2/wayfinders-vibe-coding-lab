@@ -31,8 +31,9 @@ visual design.
 - Generate dashboard status and progress from state.quiz.
 
 2. Connected question data
-- Store questions in a clearly named array or module file, but store attempts
-  and progress through app-state.js.
+- Store student-authored questions in state.quiz.questions through app-state.js
+  so they survive refresh. Store attempts and progress there as well. Do not
+  keep editable questions only in a JavaScript module or in-memory array.
 - Use this shape for every question:
   {
     id: "stable-question-id",
@@ -93,9 +94,9 @@ visual design.
 - Missing source records must not crash the quiz. If a linked knowledge entry
   is deleted, mark its questions unavailable and explain how the student can
   repair or remove them.
-- Reset Quiz must clear only quiz attempts, best score, and streak after
-  confirmation. It must leave questions, Knowledge Keeper, profile, journey,
-  and guide checklist data intact.
+- Reset Quiz Progress must clear only quiz attempts, best score, and streak
+  after confirmation. It must leave questions, Knowledge Keeper, profile,
+  journey, achievements, other modules, and guide checklist data intact.
 
 Keep the code beginner friendly with descriptive names and short functions.
 Add only a few useful comments around question selection, knowledge links,

@@ -41,8 +41,7 @@ and shared-ui.js. Follow their existing exported APIs and code style.
     category: "sky",
     summary: "One-line clue",
     details: "Full explanation",
-    location: "Optional general place",
-    mediaIds: []
+    location: "Optional general place"
   }
 - Store opened entry IDs in state.knowledge.viewedIds.
 - Create stable IDs once when records are added. Do not regenerate IDs when the

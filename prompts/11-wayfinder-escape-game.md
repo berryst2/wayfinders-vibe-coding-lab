@@ -71,12 +71,14 @@ the registry, router, and shared UI before editing.
   return to the builder. Never strand the player.
 
 5. Results and accurate scoring
-- Record completed runs with completedAt, puzzle count, attempts, hints used,
-  and elapsed seconds. Keep only the latest 10 runs.
+- Record completed runs with completedAt, puzzleIds in stage order, puzzle
+  count, attempts, hints used, and elapsed seconds. Keep only the latest 10 runs.
 - Pause elapsed time while the page is hidden and when the player exits the
   active game view. Do not rank students or compare results publicly.
-- Show a personal replay summary. "Best" means the student's fewest hints, then
-  fewest attempts for the same puzzle set; explain this rule in the interface.
+- Show a personal replay summary. Compare runs only when their ordered puzzleIds
+  are identical. For that puzzle set, "best" means the fewest hints, then the
+  fewest attempts; explain this rule in the interface. Do not rank different
+  puzzle sets against each other.
 
 6. Wow factor
 - Present stages as a route of sealed beacons. Correct answers illuminate one

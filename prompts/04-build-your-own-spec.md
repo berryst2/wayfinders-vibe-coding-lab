@@ -1,61 +1,68 @@
-# Option 4: Build your own app spec with Copilot
+# Optional exercise: Design your own Wayfinder Hub module
 
-This prompt helps students create the design brief or requirements document before they start coding.
+This prompt helps a student design one additional module that fits the existing
+Wayfinder Hub. Complete the Hub foundation first. The result is a specification
+and implementation prompt, not a separate website.
 
-Copy everything below into GitHub Copilot Chat or Copilot Agent:
+Copy everything below into GitHub Copilot Chat:
 
 ```text
-Help me create a clear website requirements document for a student web app idea.
+Help me create a clear requirements document for one new module in my existing
+Wayfinder Hub application.
 
-I am a student using GitHub Copilot or Microsoft Copilot to build a website.
-My name is: [student name]
-My class or subject is: [class name]
-My app idea is: [one sentence summary of the idea]
-The audience is: [students, family, classmates, community, etc.]
-The purpose is: [what the site should help people do or learn]
+Before asking questions, inspect app/modules/module-registry.js, app-state.js,
+router.js, shared-ui.js, and the modules already built. Preserve their current
+APIs, IDs, visual design, and accessibility patterns.
 
-Create a simple project specification with these sections:
-1. Project title
-2. Short description
-3. Audience
-4. Goals and purpose
-5. Pages the site will have (for example a home page, plus one or two feature pages) and what each page is for
-6. Three key sections or cards to include on the home page
-7. One main interactive feature
-8. One "wow factor" feature that makes the site feel fun and exciting, such as a celebration animation, a badge or streak system, a sound effect toggle, or a small game-like element
-9. Colours and visual style
-10. Accessibility and mobile requirements
-11. Success criteria for the first version
-12. Example content ideas for the page
+Ask me up to five questions about:
+- The module title, audience, and purpose
+- The student-created records it will add or reuse
+- Which existing Hub records it should link to by stable ID
+- One main interaction and one restrained wow factor
+- What saved evidence should make the module complete
 
-Write the document in a friendly, beginner-friendly tone.
-Keep the content realistic for a polished HTML, CSS, and JavaScript project.
-Encourage the final idea to include engaging elements such as images, subtle animation, sound effects, interactive sections, extra information panels, and a small multi-page structure so the project does not feel limited to a single page.
-Keep it simple enough to build in a student project and compatible with GitHub Pages.
+Then create a beginner-friendly module specification with these sections:
+1. Module title, id, route, purpose, and audience
+2. Registry definition, prerequisite module IDs, status, render, optional
+	cleanup, and isComplete rule
+3. State fields and record shapes added under the existing version 2 Hub state
+4. Stable IDs and cross-module links, storing source IDs instead of copied data
+5. Main views, controls, empty states, validation, and missing-source recovery
+6. Dashboard progress and one non-duplicated shared achievement
+7. Keyboard, screen-reader, reduced-motion, mobile, privacy, and content safety
+8. Scoped reset behavior that preserves every other module
+9. Regression boundaries for the Hub shell and existing modules
+10. Manual tests for direct hash routing, persistence, source links, cleanup,
+	 narrow screens, keyboard use, and earlier modules
 
-Then turn the specification into a final ready-to-use prompt that I can paste into Copilot to build the website.
+Keep the design compatible with the existing dependency-free HTML, CSS, and
+JavaScript application in app/. Use the existing localStorage key only through
+app-state.js. Use the existing hash router and render inside #app. Do not create
+another index.html, standalone page, navigation bar, storage key, framework,
+package manager, backend, external API, or build step.
 
-The final prompt should include:
-- The app name
-- The audience
-- The purpose
-- The pages to create and what links to what
-- The content sections
-- The design style
-- The interactive feature
-- The wow factor feature
-- The files to update: index.html, style.css, and script.js (plus any extra HTML pages)
-- A note to keep the code beginner friendly and easy to understand
+If the module uses timers, animation, audio, media, global event listeners, or
+Canvas, require a cleanup function that stops them when its route unmounts. If
+it links to another record, use #module?focus=record-id and show a repairable
+"Source unavailable" state when that record has been deleted.
+
+After the specification, produce one final ready-to-use Copilot Agent prompt
+that implements only this module. It must tell Copilot to inspect the existing
+Hub first, add a clearly named app/modules/<module-id>.js file, register it by
+replacing its placeholder or adding it once, extend version 2 defaults without
+losing data, and retest the dashboard plus at least one earlier module.
 
 Give me both:
-A. The requirement document
-B. The final Copilot build prompt
+A. The module requirements document
+B. The final Copilot implementation prompt
 ```
-
----
 
 ## Quick version
 
 ```text
-Create a simple requirements document for my website idea. I want you to ask me up to 5 questions, then turn my answers into a clear project specification and a final Copilot prompt I can paste into GitHub Copilot to build the website. Keep it beginner friendly.
+Ask me up to five questions, then design one new module for my existing
+Wayfinder Hub. It must use the Hub registry, hash router, app-state helpers,
+shared UI, stable source IDs, scoped reset, and optional cleanup contract. Give
+me a requirements document and a final Copilot Agent implementation prompt. Do
+not design a separate website or add another storage system.
 ```

@@ -1,5 +1,5 @@
 $content = [System.IO.File]::ReadAllText("prompts/00-wayfinder-hub-foundation.md")
-$matches = [regex]::Matches($content, "(?ms)```text\r?\n([\s\S]*?)```")
+$matches = [regex]::Matches($content, '(?ms)```text\r?\n([\s\S]*?)```')
 Write-Output "Matches: $($matches.Count)"
 if ($matches.Count -eq 2) {
     $first = $matches[0].Groups[1].Value

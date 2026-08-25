@@ -21,10 +21,16 @@ each one before broad refactoring.
   profile, records, links, runs, preferences, and achievements.
 - Find copied cross-module records. Replace copies with stable source IDs only
   when it can be done without data loss; otherwise report the issue first.
+- Verify every cross-module link is resolved from current shared state each time
+  its view renders. A missing source must retain the dependent record, show
+  "Source unavailable", and offer repair or unlink/remove controls. Never
+  cascade-delete student work when a source is removed.
 
 2. Navigation and lifecycle
 - Verify #home, #profile, and every registered module route works by direct URL,
   refresh, browser back, and browser forward.
+- Verify source links use #module?focus=record-id, parse parameters from the
+  hash, and reveal or focus the requested record without creating another page.
 - Unknown routes return safely to the dashboard with a useful message.
 - Move focus to each rendered heading and expose the active navigation state.
 - Confirm timed media, playback, audio, Canvas loops, and event listeners stop
