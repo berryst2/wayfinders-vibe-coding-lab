@@ -3,8 +3,9 @@
 ## What you will build
 
 In this first exercise, you will create the shared application that every later
-exercise will extend. The existing website at the repository root remains your
-lab guide. Your own cumulative application will live in the `app` folder.
+exercise will extend. The Wayfinder Hub will replace the existing website at
+the repository root so it opens directly at the main GitHub Pages URL. You will
+not need to add `/app/` to the address.
 
 By the end of this exercise, your Wayfinder Hub will have:
 
@@ -23,23 +24,24 @@ Extend it one module at a time.
 
 ```text
 I am beginning a multi-session project called Wayfinder Hub. The existing files
-at the repository root are my lab guide. Do not replace or redesign them.
+at the repository root may be replaced. Build the cumulative application
+directly in the repository root so it becomes the default GitHub Pages site.
 
-Create a new cumulative web application inside an app folder using only HTML,
-CSS, and JavaScript. Do not use a framework, package manager, build step,
-backend, external API, or inline JavaScript event handlers.
+Overwrite the existing root index.html, style.css, and script.js as needed.
+Do not create an app folder or require an /app/ URL. Use only HTML, CSS, and
+JavaScript. Do not use a framework, package manager, build step, backend,
+external API, or inline JavaScript event handlers.
 
-Create this structure:
+Create this structure at the repository root:
 
-app/
-  index.html
-  style.css
-  script.js
-  modules/
-    app-state.js
-    module-registry.js
-    router.js
-    shared-ui.js
+index.html
+style.css
+script.js
+modules/
+  app-state.js
+  module-registry.js
+  router.js
+  shared-ui.js
 
 Build the following foundation:
 
@@ -51,8 +53,8 @@ Build the following foundation:
 - Add a dashboard with a welcome message, overall progress, an achievements
   area, and cards for the modules listed below.
 - Make the layout responsive and usable with a keyboard.
-- Keep all paths relative so the app works at /REPOSITORY-NAME/app/ on GitHub
-  Pages.
+- Keep all paths relative so the app works at /REPOSITORY-NAME/ on GitHub
+  Pages and when previewed from the repository root.
 
 2. Hash router
 - Use URL hashes such as #home, #profile, and later #knowledge.
@@ -120,7 +122,7 @@ Build the following foundation:
   crashing. If a future unsupported version is found, do not overwrite it;
   show a recovery message and allow the student to reset deliberately.
 - The reset helper must remove only the "wayfinder-hub" key. It must not clear
-  all localStorage because the lab guide stores its checklist separately.
+  all localStorage because other browser data may belong to the student.
 
 5. Profile and preferences
 - Let the student save a display name and choose from at least three readable
@@ -150,15 +152,16 @@ After making the changes:
 
 ## Test before moving on
 
-- [ ] The original lab guide still opens at the repository root.
-- [ ] The Hub opens at `/app/`.
+- [ ] The Hub opens directly at the repository root in a local preview.
+- [ ] The Hub opens at `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/`
+  without adding `/app/`.
 - [ ] Home and Profile can be opened with links and browser back/forward.
 - [ ] Every placeholder card opens a useful module description.
 - [ ] Saving a name and theme survives a browser refresh.
 - [ ] Malformed saved data does not break the application.
 - [ ] Version 1 sample data migrates to version 2 without losing saved records.
 - [ ] A future unsupported version is not silently overwritten.
-- [ ] Reset removes Hub progress but does not reset the lab guide checklist.
+- [ ] Reset removes only Hub progress and leaves unrelated browser data intact.
 - [ ] The Hub works in a narrow browser window and with keyboard navigation.
 - [ ] There are no errors in the browser console.
 
