@@ -13,6 +13,9 @@
 
 ## Ten-session pathway
 
+Use the table order, not alphabetical filename order. The legacy `01` Quiz and
+`02` Knowledge Keeper filenames are intentionally linked in build order below.
+
 | Session | Student outcome | Prompt |
 |---|---|
 | 1 | Hub shell, profile, state, registry, and dashboard | [00 Foundation](00-wayfinder-hub-foundation.md) |
@@ -51,8 +54,8 @@ Journey. Do not present the sampler as the complete ten-session application.
 | Preview not loading | Open the **Ports** tab, forward port 8080, or run `python3 -m http.server 8080` |
 | Copilot not responding | Check the Copilot icon in the status bar and that the student is signed in |
 | Pages shows 404 | Repo must be **Public**, branch **main**, folder **/ (root)**, and give it 1–2 minutes |
-| Page loads but no styling | Check `style.css` is in the root and the `<link>` path is correct |
-| Hub is missing | Open `/app/`; the root URL is the lab guide |
+| Page loads but no styling | Check root `style.css` and its relative `<link>` path |
+| Hub is missing | Confirm Exercise 0 replaced the root starter files, then refresh the main preview URL |
 | An earlier module disappears | Undo the change and repeat the prompt with "extend the existing Hub; do not replace files or stable IDs" |
 | A linked record says unavailable | Open the source module and reconnect or remove the broken reference; do not recreate copied data |
 | Codespace slow to start | Pre-create codespaces before the session, or have students pair up |
@@ -78,7 +81,7 @@ directly. After the change, retest the dashboard and one earlier module.
 
 Before students commit, confirm:
 
-- The new module opens inside `/app/` through its Hub route.
+- The new module opens at the repository-root Hub URL through its hash route.
 - Existing modules and stable IDs remain intact.
 - New records survive refresh through `app-state.js`.
 - At least one source or downstream connection is demonstrated.

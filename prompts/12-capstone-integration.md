@@ -7,7 +7,7 @@ repairs inconsistent contracts, tests the whole experience, and publishes one
 coherent application.
 
 ```text
-Audit and finish my existing Wayfinder Hub in the app folder. Do not rebuild it,
+Audit and finish my existing Wayfinder Hub at the repository root. Do not rebuild it,
 replace working modules, change stable record IDs, introduce a framework or
 backend, or erase saved student data. Make small compatible repairs and explain
 each one before broad refactoring.
@@ -17,7 +17,7 @@ each one before broad refactoring.
 - Verify every registry definition has id, title, description, prerequisites,
   status, render, cleanup if needed, and isComplete.
 - Verify every module uses app-state.js instead of direct localStorage.
-- Verify saved state is version 2 or later and migrations/default merges preserve
+- Verify saved state is version 2 after migration and default merges preserve
   profile, records, links, runs, preferences, and achievements.
 - Find copied cross-module records. Replace copies with stable source IDs only
   when it can be done without data loss; otherwise report the issue first.
@@ -44,6 +44,12 @@ each one before broad refactoring.
   available, and Escape puzzle if available.
 - Skip unavailable optional records gracefully. Do not manufacture or duplicate
   content to fill gaps.
+- Choose the first saved knowledge entry that has a downstream link, falling
+  back to the first entry. Follow actual IDs: knowledgeId into a quiz question,
+  knowledgeIds into a Journey milestone, sourceId into a map stop,
+  linkedId into media, sourceId into a challenge, and sourceIds into an Escape
+  puzzle according to its puzzle type. Include only records connected to that
+  chain and preserve map order.
 - Every step has Previous, Next, Exit, and Open Source controls and works with
   keyboard navigation and reduced motion.
 
@@ -54,17 +60,28 @@ each one before broad refactoring.
 - Show useful empty, locked, started, complete, and optional states.
 - Add a "Continue where I left off" link using the last valid route, with Home
   as the fallback.
+- Update state.navigation.lastRoute through app-state.js after each successful
+  non-Home route render. Do not save unknown, locked, unsupported-recovery, or
+  source-focus parameters as the last route. Validate the saved route against
+  the current registry before showing Continue.
 
 5. Data resilience and student controls
 - Test empty state, malformed JSON, version 1 migration, current version, missing
   nested defaults, deleted linked records, and unsupported future versions.
 - Never silently overwrite unsupported future data.
-- Add Export My Hub as a downloadable JSON backup containing the versioned Hub
-  state and export date.
+- Add Export My Hub as a downloadable JSON backup envelope containing
+  { exportedAt: "ISO date-time", state: versionedHubState }.
 - Add Import Backup with file type/size checks, JSON parsing, schema/version
   validation, a preview summary, and explicit confirmation before replacement.
+- Accept version 2 state. Offer to migrate version 1 only after showing the
+  preview and receiving confirmation. Reject a version greater than 2 without
+  changing storage because it is unsupported future data. Preview profile name,
+  app title, record counts, runs, and achievements before replacement.
+- After confirmation, pass the candidate state through app-state.js
+  migrateState(), then saveState(). Do not duplicate migration or recursive
+  default-merge logic inside the import view.
 - Keep the existing scoped module resets and a separate clearly labelled Reset
-  Entire Hub confirmation. Neither may clear the root guide checklist.
+  Entire Hub confirmation. Neither may clear unrelated browser or course data.
 
 6. Accessibility and responsive audit
 - Test all controls with keyboard only, including dialogs, tabs, maps, media,
@@ -76,6 +93,11 @@ each one before broad refactoring.
 - Ensure Canvas has HTML status/instructions and media has alt text/transcripts.
 
 7. Accuracy, privacy, and cultural safety
+- Preserve the shared Pasifika palette, credited photography, reusable ornament
+  classes, and module styling. Verify every foundation image has alt text,
+  caption, creator, source, and license recorded in assets/credits.md.
+- Confirm ornaments use supplied/approved motifs or neutral geometry and do not
+  invent meanings or present generic decoration as a specific cultural design.
 - Label fictional game mechanics clearly and remove unsupported factual claims.
 - Keep student-provided content as written unless correcting an obvious typo;
   flag factual uncertainty for the student instead of inventing certainty.
@@ -98,9 +120,8 @@ each one before broad refactoring.
   modules, privacy note, media credits, and Wayfinders Vibe Coding Lab credit.
 - Add a print-friendly one-page showcase summary using existing records.
 - Update the project README's My Project section with placeholders the student
-  can fill, without changing the root guide into the student application.
-- Provide exact GitHub Pages verification steps for both the root guide URL and
-  /app/ URL.
+  can fill, without replacing the course instructions or prompt links.
+- Provide exact GitHub Pages verification steps for the repository-root Hub URL.
 - Create a 60-second demonstration outline that follows one artifact across at
   least four modules and names one technical concept the student learned.
 
@@ -115,7 +136,7 @@ After repairs, report:
 
 ## Final acceptance checklist
 
-- [ ] Root guide and `/app/` both load from GitHub Pages-compatible paths.
+- [ ] The Hub loads at the repository-root GitHub Pages URL without `/app/`.
 - [ ] Every registered route supports direct links and cleanup.
 - [ ] Dashboard progress comes from module completion rules.
 - [ ] Cross-module links survive refresh or show repairable missing states.

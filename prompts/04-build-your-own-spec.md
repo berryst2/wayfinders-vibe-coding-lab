@@ -10,7 +10,7 @@ Copy everything below into GitHub Copilot Chat:
 Help me create a clear requirements document for one new module in my existing
 Wayfinder Hub application.
 
-Before asking questions, inspect app/modules/module-registry.js, app-state.js,
+Before asking questions, inspect modules/module-registry.js, app-state.js,
 router.js, shared-ui.js, and the modules already built. Preserve their current
 APIs, IDs, visual design, and accessibility patterns.
 
@@ -36,7 +36,7 @@ Then create a beginner-friendly module specification with these sections:
 	 narrow screens, keyboard use, and earlier modules
 
 Keep the design compatible with the existing dependency-free HTML, CSS, and
-JavaScript application in app/. Use the existing localStorage key only through
+JavaScript application at the repository root. Use the existing localStorage key only through
 app-state.js. Use the existing hash router and render inside #app. Do not create
 another index.html, standalone page, navigation bar, storage key, framework,
 package manager, backend, external API, or build step.
@@ -48,7 +48,7 @@ it links to another record, use #module?focus=record-id and show a repairable
 
 After the specification, produce one final ready-to-use Copilot Agent prompt
 that implements only this module. It must tell Copilot to inspect the existing
-Hub first, add a clearly named app/modules/<module-id>.js file, register it by
+Hub first, add a clearly named modules/<module-id>.js file, register it by
 replacing its placeholder or adding it once, extend version 2 defaults without
 losing data, and retest the dashboard plus at least one earlier module.
 

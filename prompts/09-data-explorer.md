@@ -6,7 +6,7 @@ Complete the Hub foundation. Data Explorer creates observation records that the
 Community Challenge Board and Escape Game can reuse.
 
 ```text
-Extend my existing Wayfinder Hub in the app folder with a Data Explorer module.
+Extend my existing Wayfinder Hub at the repository root with a Data Explorer module.
 Preserve the Hub and all existing modules. Do not create another page, use a
 chart library or external API, add location tracking, or add a storage key.
 
@@ -14,9 +14,13 @@ Inspect app-state.js, the registry, router, shared UI, and current styling first
 
 1. Register and define completion
 - Replace the data placeholder with a real module on #data.
-- Require only the Hub foundation.
+- Set prerequisites to [] because the Hub foundation is represented by an empty
+  prerequisite array.
 - Complete the module when at least five valid observations exist and the
   student has selected a summary and visualization.
+- Persist the selected unit, summary metric, and visualization type through
+  app-state.js in state.observations.selectedUnit, selectedSummary, and
+  selectedVisualization so completion survives refresh.
 - Report observation count and completion to the dashboard.
 
 2. Observation records
@@ -49,6 +53,12 @@ Inspect app-state.js, the registry, router, shared UI, and current styling first
 - Calculate count, minimum, maximum, mean, and range only from the currently
   filtered records that share the selected unit. Never combine incompatible
   units in one calculation.
+- Add a labelled Unit filter populated from the currently filtered records.
+  When multiple units remain, require one unit selection before calculating.
+  If no records match it, show "No data for this unit."
+- Let the student select one summary metric (minimum, maximum, mean, or range)
+  and one visualization type (bar or line). Save both selections and validate
+  them against these allowed values when loading older or imported state.
 - Show "Not enough comparable data" when fewer than two matching records exist.
 - Round display values sensibly without changing stored values.
 - Explain in student-friendly text that a pattern in a small dataset is an

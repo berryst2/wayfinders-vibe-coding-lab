@@ -13,7 +13,7 @@ attempts, streaks, and badges feed the shared dashboard. Answer explanations
 take students back to the Knowledge Keeper source.
 
 ```text
-Extend my existing Wayfinder Hub in the app folder with a Navigation Quiz
+Extend my existing Wayfinder Hub at the repository root with a Navigation Quiz
 module. Do not replace the application shell or create quiz.html, learn.html,
 another index.html, another navigation bar, or a new localStorage key.
 
@@ -23,7 +23,7 @@ visual design.
 
 1. Register the module
 - Replace the quiz placeholder with a real module on the existing #quiz route.
-- Set Knowledge Keeper as its prerequisite.
+- Set prerequisites to ["knowledge"] with the default prerequisiteMode "all".
 - If there are fewer than three knowledge entries, show a useful empty state
   with a link to #knowledge instead of starting the quiz.
 - Consider the module complete after one finished attempt containing at least
@@ -67,8 +67,10 @@ visual design.
 - Support keyboard operation and return focus to the new question heading.
 
 4. Results and shared progress
-- Add each completed attempt to state.quiz.attempts with date, score, total,
-  difficulty, and the question IDs used.
+- Add each completed attempt to state.quiz.attempts with a stable id created
+  once, date, score, total, difficulty, and the question IDs used. Preserve
+  attempt and question IDs across refreshes so later modules can resolve the
+  exact records involved.
 - Update state.quiz.bestScore and state.quiz.streak through app-state.js.
 - Show final score, an encouraging result, source entries to review, and Play
   Again.
@@ -96,7 +98,7 @@ visual design.
   repair or remove them.
 - Reset Quiz Progress must clear only quiz attempts, best score, and streak
   after confirmation. It must leave questions, Knowledge Keeper, profile,
-  journey, achievements, other modules, and guide checklist data intact.
+  journey, achievements, other modules, and unrelated course/browser data intact.
 
 Keep the code beginner friendly with descriptive names and short functions.
 Add only a few useful comments around question selection, knowledge links,

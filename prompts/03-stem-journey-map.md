@@ -9,11 +9,11 @@ order, but they are optional connections rather than technical prerequisites.
 ## What this module contributes
 
 My STEM Journey creates stable goal and milestone records for later Story Map
-and Community Challenge modules. It extends the application in `app`; it does
+and Community Challenge modules. It extends the application at the repository root; it does
 not replace the Hub or create separate home, journey, or summary pages.
 
 ```text
-Extend my existing Wayfinder Hub in the app folder with a real STEM Journey
+Extend my existing Wayfinder Hub at the repository root with a real STEM Journey
 module. Do not replace the Hub shell, dashboard, profile, navigation, router,
 state helpers, shared UI, Knowledge Keeper, Navigation Quiz, or existing visual
 design. Do not create another index.html, journey.html, or summary.html, and do
@@ -26,9 +26,9 @@ and patterns. Make the smallest compatible changes needed.
 1. Register and route the module
 - Replace the journey placeholder with a real module on the existing #journey
   route.
-- Set the Hub foundation as its required prerequisite. Knowledge Keeper and
-  Quiz are useful connections but must not block a student who has not finished
-  them.
+- Set prerequisites to [] because the Hub foundation is represented by an empty
+  prerequisite array. Knowledge Keeper and Quiz are useful connections but
+  must not block a student who has not finished them.
 - Render every Journey view inside the Hub main area.
 - Consider the module complete when one goal exists, all five core milestones
   are complete, and a next action has been saved.
@@ -44,6 +44,7 @@ and patterns. Make the smallest compatible changes needed.
 - Store milestones in state.journey.milestones with this shape:
   {
     id: "stable-milestone-id",
+    isCore: true,
     title: "Notice",
     description: "What this stage means",
     action: "A small action I can take",
@@ -56,6 +57,9 @@ and patterns. Make the smallest compatible changes needed.
   }
 - Create stable IDs once. Never use an array position as an ID or regenerate an
   ID during rendering.
+- Set isCore to true for the five required starter milestones. Later modules may
+  add extension milestones with isCore false; those must not change Journey's
+  five-core-milestone progress or completion calculation.
 - Use only these status values: not-started, current, and complete.
 - Preserve milestone IDs when editing because Story Map and Challenge Board
   will reference them later.
@@ -123,7 +127,7 @@ and patterns. Make the smallest compatible changes needed.
 7. Reset, privacy, and regression boundaries
 - Reset Journey must clear only state.journey.goal, milestones, nextAction,
   targetDate, and futurePostcard after confirmation. It must not change profile,
-  knowledge, quiz, achievements earned elsewhere, games, or the guide checklist.
+  knowledge, quiz, achievements earned elsewhere, games, or unrelated course data.
 - Do not collect school name, exact location, contact details, or sensitive
   personal plans.
 - Use semantic controls, visible focus, live status messages, large touch
@@ -145,7 +149,7 @@ After editing:
 ## Test before moving on
 
 - [ ] Journey opens from Hub navigation and a direct `#journey` URL.
-- [ ] No root guide or earlier module is replaced.
+- [ ] No README, prompt file, course documentation, or earlier module is replaced.
 - [ ] Goal, reflections, statuses, links, and next action survive refresh.
 - [ ] An older Hub gains Journey defaults without losing existing module data.
 - [ ] Milestone IDs remain stable after edits and refreshes.

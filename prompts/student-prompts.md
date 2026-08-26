@@ -4,8 +4,17 @@ These exercises build one connected application called **Wayfinder Hub**. Start
 with Exercise 0, then add one module at a time. Do not replace your earlier work
 when you begin a new exercise.
 
-Your lab guide stays at the repository root. Your cumulative application lives
-in the `app` folder and opens at `/app/` in your preview or published site.
+The repository starts with a website-based lab guide. Exercise 0 replaces that
+root website with your cumulative Hub, which then opens at the main preview and
+published URL without `/app/`. README.md and prompts/ remain your course guide.
+
+Follow the session order below rather than sorting files by filename. The
+legacy `01` Quiz and `02` Knowledge Keeper filenames are retained so existing
+course links keep working; Knowledge Keeper is built before Navigation Quiz.
+
+Every module should inherit the foundation's shared Pasifika palette, credited
+images, approved or neutral ornament classes, typography, cards, and controls.
+Extend that visual system rather than redesigning each module separately.
 
 ## The pathway
 
@@ -74,7 +83,7 @@ prompts for testing, accessibility, mobile layout, debugging, and presentation.
 1. Open the next exercise file and read what it adds to your Hub.
 2. Copy only its main `text` prompt into GitHub Copilot Chat in Agent mode.
 3. Review the proposed file changes before keeping them.
-4. Open `/app/` and test the new module.
+4. Open the repository-root preview URL and test the new module.
 5. Retest the dashboard and at least one earlier module.
 6. Complete the exercise checklist, then commit and sync your changes.
 7. Demonstrate one new connection between modules to another student.

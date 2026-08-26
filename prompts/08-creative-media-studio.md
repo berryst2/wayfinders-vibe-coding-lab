@@ -6,7 +6,7 @@ Complete Knowledge Keeper or Story Map first. Media Studio enriches existing
 records; it does not become a disconnected gallery or upload service.
 
 ```text
-Extend my existing Wayfinder Hub in the app folder with a Creative Media Studio
+Extend my existing Wayfinder Hub at the repository root with a Creative Media Studio
 module. Preserve the Hub and all existing modules. Do not create another page,
 backend, file-upload service, third-party embed script, or storage key.
 
@@ -15,8 +15,9 @@ Map before editing. Follow their APIs and existing design.
 
 1. Register and complete the module
 - Replace the media placeholder with a real module on #media.
-- Require Knowledge Keeper or a completed Story Map route. If neither has
-  content, show links explaining what to build first.
+- Set prerequisites to ["knowledge", "map"] with prerequisiteMode "any". The
+  module is ready when either registry completion rule passes. If neither is
+  complete, show links explaining what to build first.
 - Consider Media Studio complete when it has three valid media records, each
   attached to an existing knowledge entry or map stop, and each has accessible
   text plus source/permission information.
@@ -45,8 +46,8 @@ Map before editing. Follow their APIs and existing design.
 - Never access localStorage directly.
 
 3. Add and manage media
-- Support paths relative to app/index.html, such as assets/my-photo.jpg, for
-  files the student has added under app/assets, and support normal HTTPS URLs.
+- Support paths relative to index.html, such as assets/my-photo.jpg, for files
+  the student has added under assets/, and support normal HTTPS URLs.
   Explain that large repository files slow the site and remote links may stop
   working.
 - Do not implement uploads, recording, camera, microphone, autoplay, or hidden

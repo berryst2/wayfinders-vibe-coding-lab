@@ -30,16 +30,17 @@ the final game.
 
 ## Guide and application
 
-This repository contains two different experiences:
+This repository begins with a website-based lab guide. Exercise 0 intentionally
+replaces the root `index.html`, `style.css`, and `script.js` with the Wayfinder
+Hub so the published application opens at the main repository URL.
 
-- The website at the repository root is the **lab guide**. Keep it intact.
-- The application you build lives in the **`app` folder**.
+- README.md, SETUP.md, prompts/, and examples/ remain the course documentation.
+- The cumulative application lives directly at the repository root.
 
-In a local preview, open `/app/` to see your application. After publishing, its
-address will be:
+After Exercise 0, the local preview root shows the Hub. Its published address is:
 
 ```text
-https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/app/
+https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
 ```
 
 ## Tools
@@ -73,16 +74,16 @@ Open a terminal and run:
 python3 -m http.server 8080
 ```
 
-Open port 8080 from the **Ports** tab. The root page is your guide. Your Hub
-will appear at `/app/` after the first exercise.
+Open port 8080 from the **Ports** tab. Before Exercise 0 the root page is the
+starter guide; afterwards the same root URL is your Hub.
 
 ### 4. Build the foundation
 
 Open [prompts/00-wayfinder-hub-foundation.md](prompts/00-wayfinder-hub-foundation.md),
 copy its main prompt, and paste it into GitHub Copilot Chat in Agent mode.
 
-Review the changes before keeping them. Confirm the root guide still works and
-the new Hub opens at `/app/`.
+Review the changes before keeping them. Confirm the root starter site was
+replaced and the new Hub opens at the same main preview URL.
 
 ### 5. Follow the module pathway
 
@@ -95,9 +96,9 @@ exercise list and prerequisites. For every exercise:
 4. Commit and sync the working checkpoint.
 5. Demonstrate one connection between modules.
 
-Do not ask Copilot to replace the application or create another standalone
-website. Every exercise must extend the existing `app` folder, register with the
-Hub, and use its shared state helpers.
+After Exercise 0, do not ask Copilot to replace the application or create
+another standalone website. Every exercise must extend the existing root Hub,
+register with it, preserve its Pasifika visual system, and use shared state.
 
 ## Suggested session rhythm
 
@@ -121,7 +122,7 @@ multiple sessions.
 3. Select **Settings**, then **Pages**.
 4. Choose **Deploy from a branch**.
 5. Select branch **main** and folder **/ (root)**.
-6. Open both the root guide URL and the `/app/` application URL.
+6. Open the repository-root URL and confirm the Hub loads without `/app/`.
 
 ## Completion checklist
 
@@ -129,7 +130,7 @@ multiple sessions.
 
 - [ ] Built the Hub dashboard, profile, navigation, and shared state
 - [ ] Confirmed profile changes survive a refresh
-- [ ] Confirmed reset affects the Hub but not the guide checklist
+- [ ] Confirmed reset affects only the Hub storage key
 
 **Connected modules**
 

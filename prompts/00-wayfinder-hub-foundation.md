@@ -3,9 +3,9 @@
 ## What you will build
 
 In this first exercise, you will create the shared application that every later
-exercise will extend. The repository-root website remains the lab guide. The
-Wayfinder Hub lives in `app` and opens at `/app/` in local preview and on GitHub
-Pages.
+exercise will extend. The Wayfinder Hub replaces the starter website at the
+repository root, so it opens at the main local-preview and GitHub Pages URL
+without requiring an `/app/` path.
 
 By the end of this exercise, your Wayfinder Hub will have:
 
@@ -23,25 +23,27 @@ helpers created here. Do not replace the Hub when starting another exercise.
 Extend it one module at a time.
 
 ```text
-I am beginning a multi-session project called Wayfinder Hub. The existing
-index.html, style.css, and script.js at the repository root are the lab guide.
-Do not modify or replace them. Build the cumulative application in a new app
-folder so the guide and student application remain available together.
+I am beginning a multi-session project called Wayfinder Hub. Replace the
+existing starter website at the repository root with the cumulative Hub.
+Rewrite the root index.html, style.css, and script.js as needed. Do not create
+an app folder or require users to navigate to an /app/ URL. Keep README.md,
+SETUP.md, prompts/, and examples/ available as course documentation.
 
 Use only HTML, CSS, and JavaScript. Do not use a framework, package manager,
 build step, backend, external API, or inline JavaScript event handlers.
 
 Create this structure at the repository root:
 
-app/
-  index.html
-  style.css
-  script.js
-  modules/
-    app-state.js
-    module-registry.js
-    router.js
-    shared-ui.js
+index.html
+style.css
+script.js
+assets/
+  credits.md
+modules/
+  app-state.js
+  module-registry.js
+  router.js
+  shared-ui.js
 
 Build the following foundation:
 
@@ -53,11 +55,45 @@ Build the following foundation:
 - Add a dashboard with a welcome message, overall progress, an achievements
   area, and cards for the modules listed below.
 - Make the layout responsive and usable with a keyboard.
-- Load app/script.js as an ES module with type="module". Keep imports and asset
-  paths relative within app so the Hub works at /REPOSITORY-NAME/app/ on GitHub
-  Pages and at /app/ in a local preview. Do not import files from the root guide.
+- Give every rendered view one main h1 with tabindex="-1". Render all profile
+  and student-authored text with textContent or DOM properties, never by
+  inserting untrusted strings with innerHTML.
+- Load script.js as an ES module with type="module". Keep imports and asset
+  paths relative to the repository root so the Hub works at
+  /REPOSITORY-NAME/ on GitHub Pages and at / in a local preview.
 
-2. Hash router
+2. Pasifika visual direction and media
+- Give the Hub a contemporary Pasifika visual direction grounded in ocean,
+  navigation, community, learning, and connection. Use a balanced palette such
+  as deep ocean blue, lagoon teal, coral, sunrise gold, ink, and white; do not
+  make the interface a one-colour blue theme.
+- Make the Hub name and a strong, permission-cleared Pasifika or Pacific
+  ocean/navigation photograph visible in the first viewport. Keep the header
+  compact and the dashboard immediately usable rather than creating a separate
+  marketing landing page.
+- Include at least two actual, relevant images in assets/, not empty grey
+  placeholders. Prefer student-created or openly licensed photographs. Record
+  each image's filename, creator, source URL, license, and required attribution
+  in assets/credits.md, add useful alt text and visible captions, and include a
+  small Media Credits area in the Hub.
+- Add restrained ornamental bands or dividers using student-, facilitator-, or
+  community-approved motifs when supplied. If no approved motif is supplied,
+  use neutral wave, star-path, and woven-grid geometry without presenting it as
+  a traditional design. Do not copy sacred, tattoo, tapa, or culture-specific
+  patterns from the web, invent cultural meanings, or label generic decoration
+  as belonging to a specific Pasifika culture.
+- Use decoration as framing, not as a background behind long text. Ensure text
+  remains readable, images crop safely on phones, ornament never obscures
+  controls, and all essential meaning remains available without images or colour.
+- Define shared CSS variables for the Pasifika palette, typography, spacing,
+  focus ring, borders, and shadows. Add reusable classes for module headings,
+  cards, forms, status messages, media frames, and ornament dividers so later
+  modules look like parts of one Hub instead of separate websites.
+- Preserve this visual system in every later module through shared CSS variables
+  and reusable classes. Later exercises may add media but must not replace the
+  approved visual identity or introduce unrelated cultural symbols.
+
+3. Hash router
 - Use URL hashes such as #home, #profile, and later #knowledge.
 - Put the routing logic in modules/router.js.
 - Unknown or empty hashes must safely show the dashboard.
@@ -65,14 +101,21 @@ Build the following foundation:
   query from the hash, not window.location.search, and pass decoded parameters
   to the active view. This is how later modules open a specific source record.
 - Export parseRouteHash(), navigateTo(routeId, parameters), and
-  startRouter(onRouteChange). Keep rendering in app/script.js so there is one
+  startRouter(onRouteChange). Keep rendering in script.js so there is one
   route-change path.
-- Before rendering a new route, call cleanup on the previously active module
-  when it provides that function. This must also happen when navigating Home or
-  Profile so later timers, media, and game loops cannot continue in the background.
-- After a route changes, move keyboard focus to the rendered main heading.
+- navigateTo(routeId, parameters) must URL-encode parameters into the hash. For
+  example, navigateTo("knowledge", { focus: "entry-123" }) creates
+  #knowledge?focus=entry-123. parseRouteHash() returns
+  { routeId: "knowledge", parameters: { focus: "entry-123" } }, and the route
+  callback passes routeContext as { routeId, parameters }. Modules read an
+  optional focused ID from routeContext.parameters.focus and must handle a
+  missing or unknown ID safely.
+- In the single route-change callback in script.js, call cleanup() on the
+  previously active module first, render the new route second, and focus its h1
+  third. Run cleanup when navigating to Home or Profile too, so timers, media,
+  global listeners, and game loops cannot continue in the background.
 
-3. Module registry
+4. Module registry
 - Put module definitions in modules/module-registry.js.
 - Export registerModule(definition), getModule(moduleId), and getModules().
   Registering an existing id must replace that placeholder in place rather than
@@ -91,15 +134,17 @@ Build the following foundation:
   prerequisites are complete. Recalculate locked/ready display from current
   state rather than permanently rewriting the registered definition.
 - Later exercises should add one implementation file such as
-  modules/knowledge.js that exports its module definition, then import and
-  register that definition through module-registry.js. Do not put complete
-  feature implementations into app/script.js.
+  modules/knowledge.js that exports its module definition. Import that definition
+  into module-registry.js and pass it to registerModule(). Feature modules may
+  import app-state.js, router.js, and shared-ui.js, but must not import the
+  registry that imports them. Do not put complete feature implementations into
+  script.js.
 - The dashboard and module navigation must be generated from this registry,
   not duplicated by hand in index.html.
 - Selecting an unfinished placeholder should show its title, purpose,
   prerequisites, and a friendly "Build this in a later exercise" message.
 
-4. Shared application state
+5. Shared application state
 - Put all localStorage access in modules/app-state.js. Other files must call
   its exported helpers instead of accessing localStorage directly.
 - Use the storage key "wayfinder-hub".
@@ -107,10 +152,12 @@ Build the following foundation:
   {
     version: 2,
     profile: {
+      appTitle: "Wayfinder Hub",
       name: "",
       theme: "ocean",
       preferences: { soundEnabled: true, calmDisplay: false }
     },
+    navigation: { lastRoute: "home" },
     knowledge: { entries: [], viewedIds: [] },
     quiz: { questions: [], attempts: [], bestScore: 0, streak: 0 },
     journey: {
@@ -124,6 +171,9 @@ Build the following foundation:
     media: { items: [] },
     observations: {
       items: [],
+      selectedUnit: "",
+      selectedSummary: "",
+      selectedVisualization: "",
       story: { noticing: "", wondering: "", investigating: "" }
     },
     challenges: { items: [] },
@@ -148,11 +198,21 @@ Build the following foundation:
 - Achievement records use { id, title, earnedAt }, where earnedAt is an ISO 8601
   date-time. Deduplicate them by id and preserve the earliest earnedAt value.
 - Export loadState(), getState(), saveState(nextState),
-  updateState(updateFunction), resetState(), and createId(prefix).
-  updateState receives the current state, applies one change, saves, and returns
-  the updated state. createId uses crypto.randomUUID() with the supplied prefix
-  and a safe uniqueness fallback when randomUUID is unavailable. Later modules
-  must use createId once when creating records and preserve that ID on edits.
+  updateState(updateFunction), migrateState(candidateState), getStateStatus(),
+  resetState(), and createId(prefix). getState() returns a clone so callers
+  cannot change saved state accidentally. updateState clones the current state,
+  calls updateFunction(draftState) so the callback mutates only the fields it
+  owns, persists the complete draft, and returns a fresh clone. Do not accept a
+  partial object as a replacement state because that could delete neighboring
+  module data.
+- migrateState(candidateState) validates a candidate without writing storage,
+  migrates version 1 to version 2, merges current defaults, and returns the
+  prepared version 2 state. It must reject unsupported future versions. Use it
+  from loadState() and later from confirmed backup import so migration behavior
+  has one owner.
+  createId(prefix) uses crypto.randomUUID() with the supplied prefix and a safe
+  uniqueness fallback when randomUUID is unavailable. Later modules must use
+  createId once when creating records and preserve that ID on edits.
 - Add a migration from version 1 to version 2 that preserves all existing
   profile, knowledge, quiz, journey, map, media, observation, challenge, game,
   and achievement data while adding the new nested defaults above.
@@ -165,17 +225,22 @@ Build the following foundation:
 - If saved JSON is missing or malformed, recover with safe defaults without
   crashing. If a future unsupported version is found, do not overwrite it;
   show a recovery message and allow the student to reset deliberately.
+- getStateStatus() must let the shell distinguish normal, recovered-malformed,
+  and unsupported-future states. saveState() and updateState() must refuse to
+  overwrite unsupported future data. While unsupported data exists, render the
+  recovery message instead of modules and offer only a deliberate reset.
 - The reset helper must remove only the "wayfinder-hub" key. It must not clear
   all localStorage because other browser data may belong to the student.
 
-5. Profile and preferences
-- Let the student save a display name and choose from at least three readable
-  themes.
+6. Profile and preferences
+- Let the student save an app title, a display name, and choose from at least
+  three readable themes. Keep every theme within the shared Pasifika visual
+  direction while varying contrast and accent colours.
 - Store profile changes through app-state.js and update the welcome message.
 - Include a clear reset-progress button with a confirmation step.
 - Respect prefers-reduced-motion and do not require sound.
 
-6. Shared UI helpers
+7. Shared UI helpers
 - Put reusable progress, achievement, status-message, and celebration helpers
   in modules/shared-ui.js.
 - Export renderProgress(current, total, label),
@@ -201,10 +266,13 @@ After making the changes:
 
 ## Test before moving on
 
-- [ ] The root lab guide still opens and its original files are unchanged.
-- [ ] The Hub opens at `/app/` in a local preview.
+- [ ] The Hub replaces the starter site and opens at `/` in a local preview.
 - [ ] The Hub opens at
-  `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/app/`.
+  `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/` without `/app/`.
+- [ ] At least two credited, permission-cleared images load with alt text and
+  captions, including one strong first-viewport image.
+- [ ] Pasifika-inspired colour and approved or neutral ornament frame the Hub
+  without reducing readability or claiming unsupported cultural meaning.
 - [ ] Home and Profile can be opened with links and browser back/forward.
 - [ ] Every placeholder card opens a useful module description.
 - [ ] Saving a name and theme survives a browser refresh.

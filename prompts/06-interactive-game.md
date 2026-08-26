@@ -18,7 +18,7 @@ and achievements. It mounts inside the existing Hub and must not create another
 site or storage system.
 
 ```text
-Extend my existing Wayfinder Hub in the app folder with an optional Canvas game
+Extend my existing Wayfinder Hub at the repository root with an optional Canvas game
 module called "Starlight Voyage". Preserve the Hub shell, dashboard, profile,
 router, shared state, shared UI, every existing module, and the current visual
 design. Do not create game.html, another index.html, a separate navigation bar,
@@ -39,10 +39,12 @@ Section 9 wow factors one at a time, testing cleanup and performance after each.
 1. Register and mount the game safely
 - Replace the arcade-game placeholder with a real optional module on the
   existing #arcade-game route.
+- Keep status "optional" and prerequisites [] so it never blocks required Hub
+  progress and can be built directly after the foundation.
 - Render the title, instructions, HUD, canvas, controls, and result overlay
   inside the Hub main area.
 - Keep the game's JavaScript in a clearly named module such as
-  app/modules/arcade-game.js.
+  modules/arcade-game.js.
 - Provide explicit mount and unmount or cleanup behavior. When the player
   leaves the route, cancel requestAnimationFrame, remove game-specific event
   listeners, stop sounds, and clear temporary objects.

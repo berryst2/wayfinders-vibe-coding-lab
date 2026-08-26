@@ -3,7 +3,7 @@
 ## Prerequisite
 
 Complete [Exercise 0: Wayfinder Hub foundation](00-wayfinder-hub-foundation.md)
-first. This exercise extends the existing application in `app`; it does not
+first. This exercise extends the existing application at the repository root; it does not
 create a separate website.
 
 Use fictional, non-sensitive content while building. Replace it only with
@@ -16,18 +16,19 @@ Each record has a stable ID so a quiz, map stop, media item, or puzzle can link
 back to the source instead of copying its text.
 
 ```text
-Extend my existing Wayfinder Hub application in the app folder by building the
+Extend my existing Wayfinder Hub application at the repository root by building the
 real Knowledge Keeper module. Do not replace the Hub shell, router, dashboard,
 profile, state file, shared UI, or existing visual design. Do not create another
 index.html or a separate passport page.
 
-Before editing, inspect app/modules/app-state.js, module-registry.js, router.js,
+Before editing, inspect modules/app-state.js, module-registry.js, router.js,
 and shared-ui.js. Follow their existing exported APIs and code style.
 
 1. Module registration and route
 - Replace the knowledge placeholder in the module registry with a real module.
 - Use the existing #knowledge route and render inside the Hub main area.
-- Set its prerequisite to the Hub foundation and provide an isComplete rule.
+- Set prerequisites to [] because the Hub foundation is represented by an empty
+  prerequisite array, and provide an isComplete rule.
 - Consider the module complete when the student has at least three knowledge
   entries and has viewed each of those entries.
 - Make dashboard progress and status update from shared state.

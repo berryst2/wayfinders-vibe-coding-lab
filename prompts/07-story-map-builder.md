@@ -6,7 +6,7 @@ Complete Knowledge Keeper and STEM Journey first. This module combines their
 records into a visual route without copying or changing the source data.
 
 ```text
-Extend my existing Wayfinder Hub in the app folder with a Story and Route Map
+Extend my existing Wayfinder Hub at the repository root with a Story and Route Map
 module. Preserve the Hub shell, router, shared state, dashboard, profile, and
 every existing module. Do not create another HTML page, replace an existing
 module, add a framework or map API, or create a new localStorage key.
@@ -16,7 +16,8 @@ shared-ui.js, Knowledge Keeper, and STEM Journey. Follow their existing APIs.
 
 1. Register the module
 - Replace the map placeholder with a real module on #map.
-- Require Knowledge Keeper and STEM Journey in the registry.
+- Set prerequisites to ["knowledge", "journey"] with the default
+  prerequisiteMode "all".
 - Consider it complete when a named route has at least three saved stops and
   includes at least one knowledge entry and one journey milestone.
 - Report stop count and completion to the dashboard from state.map.
@@ -37,6 +38,9 @@ shared-ui.js, Knowledge Keeper, and STEM Journey. Follow their existing APIs.
   }
 - sourceType must be knowledge or milestone. sourceId must reference an existing
   Knowledge Keeper entry or STEM Journey milestone.
+- Store the existing stable sourceId exactly as provided. Never regenerate or
+  replace a milestone or knowledge ID when a source is edited. A deleted source
+  leaves a repairable missing-source stop.
 - Store normalized x and y percentages from 0 to 100 so the map remains
   responsive. Preserve stable stop IDs when moving or editing stops.
 - Use app-state.js for every saved change. Never access localStorage directly.
@@ -66,7 +70,8 @@ shared-ui.js, Knowledge Keeper, and STEM Journey. Follow their existing APIs.
 - Knowledge stops link to #knowledge and milestone stops link to #journey using
   the Hub router's source-focus pattern.
 - Add a Journey Playback control that illuminates stops in order and shows each
-  route note. Include Pause, Previous, Next, and Exit controls.
+  route note. Include Play, Pause, Previous, Next, and Exit controls. Never
+  auto-start playback; require Play or Next from the student.
 - Respect prefers-reduced-motion: use an instant step change instead of animated
   travel when reduced motion is requested.
 - On completion, reveal a print-friendly route summary and award one shared,

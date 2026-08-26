@@ -7,7 +7,7 @@ if ($matches.Count -eq 2) {
     Write-Output "CharCountXml: $length"
     $nonEmpty = $length -gt 0
     Write-Output "NonEmpty: $nonEmpty"
-    $anchors = @("app/", "app-state.js", "module-registry.js", "router.js", "wayfinder-hub", "#home", "#profile", "prefers-reduced-motion")
+    $anchors = @("index.html", "style.css", "script.js", "assets/", "credits.md", "modules/", "app-state.js", "module-registry.js", "router.js", "wayfinder-hub", "#home", "#profile", "prefers-reduced-motion", "Pasifika")
     foreach ($a in $anchors) {
         $has = $first.Contains($a)
         Write-Output "Anchor $a | Contains: $has"

@@ -7,7 +7,7 @@ pattern puzzle. This game synthesizes student-created content; it is distinct
 from the optional real-time Canvas arcade game.
 
 ```text
-Extend my existing Wayfinder Hub in the app folder with a Wayfinder Escape Game
+Extend my existing Wayfinder Hub at the repository root with a Wayfinder Escape Game
 module. Preserve every existing module and shared API. Do not create another
 page, use Canvas or a game engine, fetch puzzle answers from an external service,
 or add a localStorage key.
@@ -17,7 +17,9 @@ the registry, router, and shared UI before editing.
 
 1. Register and define completion
 - Replace the escape-game placeholder with a real module on #escape-game.
-- Require a completed Quiz attempt and Story Map route.
+- Set prerequisites to ["quiz", "map"] with the default prerequisiteMode
+  "all"; their registry completion rules represent the required completed Quiz
+  attempt and Story Map route.
 - Complete the module after the player finishes all available stages once.
 - Report current stage, completions, hints, and best result to the dashboard.
 
@@ -41,10 +43,15 @@ the registry, router, and shared UI before editing.
     explanation: "Why the answer works"
   }
 - type must be knowledge, route-order, quiz-review, or data-pattern.
-- sourceIds must reference current shared records. Do not copy full knowledge,
-  route, quiz-attempt, or observation records into game state.
-- Normalize typed answers by trimming, case-folding, and collapsing spaces. Do
-  not use fuzzy matching for sensitive or ambiguous answers.
+- sourceIds must identify records from the collection implied by type:
+  knowledge uses knowledge entry IDs, route-order uses map stop IDs,
+  quiz-review uses quiz question IDs, and data-pattern uses observation IDs.
+  Resolve those records from current shared state whenever the puzzle renders.
+  Do not copy full knowledge, route, quiz question, or observation records into
+  game state.
+- Normalize acceptedAnswers before saving by trimming, lowercasing, and
+  collapsing repeated spaces. Apply the same normalization to typed input before
+  exact comparison. Do not use fuzzy matching for sensitive or ambiguous answers.
 - Never access localStorage directly.
 
 3. Puzzle builder
